@@ -1,12 +1,12 @@
 <vstack id="hello-ios">
-  <hstack>
+  <hstack modifiers={@native |> padding(all: 5)}>
     <text>Hello iOS!</text>
   </hstack>
-  <hstack>
+  <hstack modifiers={@native |> padding(all: 5)}>
     <text>This button has been pressed <%= assigns[:count] %> times.</text>
   </hstack>
-  <hstack>
-    <button phx-click="increment-count">
+  <hstack modifiers={@native |> padding(all: 5)}>
+    <button modifiers={@native |> tint(color: "#4F46E5")} phx-click="increment-count">
       <text>Press me</text>
     </button>
   </hstack>
