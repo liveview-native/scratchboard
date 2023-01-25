@@ -39,9 +39,9 @@ defmodule Scratchboard.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.17.5"},
+      {:phoenix_live_view, "~> 0.18.7"},
       {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.6"},
+      {:phoenix_live_dashboard, "~> 0.7.2"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
@@ -49,10 +49,9 @@ defmodule Scratchboard.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:live_view_native, "~> 0.0.2"},
-      {:live_view_native_swift_ui, "~> 0.0.2"}
-      # {:live_view_native, path: "../live_view_native"},
-      # {:live_view_native_swift_ui, path: "../live_view_native_swift_ui"}
+      {:tailwind, "~> 0.1.9", only: :dev},
+      {:live_view_native, "~> 0.0.3"},
+      {:live_view_native_swift_ui, "~> 0.0.3"}
     ]
   end
 
@@ -68,7 +67,7 @@ defmodule Scratchboard.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
     ]
   end
 end

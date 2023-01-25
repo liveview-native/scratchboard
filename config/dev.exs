@@ -25,8 +25,8 @@ config :scratchboard, ScratchboardWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "dI/dSwUR/Ce2F4LVtYKUsHui8ST8CZePE4JOpbzZQ/KfeYj7wlWpjZhoqq99WoYm",
   watchers: [
-    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -59,7 +59,7 @@ config :scratchboard, ScratchboardWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/scratchboard_web/(live|views)/.*(ex)$",
+      ~r"lib/scratchboard_web/(components|live|views)/.*(ex)$",
       ~r"lib/scratchboard_web/templates/.*(eex)$"
     ]
   ]

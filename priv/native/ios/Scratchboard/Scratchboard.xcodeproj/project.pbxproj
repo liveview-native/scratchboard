@@ -11,7 +11,7 @@
 		2F428A87290CB40700BF8FE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F428A86290CB40700BF8FE5 /* ContentView.swift */; };
 		2F428A89290CB40800BF8FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A88290CB40800BF8FE5 /* Assets.xcassets */; };
 		2F428A8C290CB40800BF8FE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */; };
-		2F428A94290CB43C00BF8FE5 /* PhoenixLiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2F428A93290CB43C00BF8FE5 /* PhoenixLiveViewNative */; };
+		2FA0F54729720BFB007EE9C2 /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2FA0F54629720BFB007EE9C2 /* LiveViewNative */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F428A94290CB43C00BF8FE5 /* PhoenixLiveViewNative in Frameworks */,
+				2FA0F54729720BFB007EE9C2 /* LiveViewNative in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,8 +37,10 @@
 		2F428A78290CB40700BF8FE5 = {
 			isa = PBXGroup;
 			children = (
+				2F8909E6294D7812009001B8 /* Packages */,
 				2F428A83290CB40700BF8FE5 /* Scratchboard */,
 				2F428A82290CB40700BF8FE5 /* Products */,
+				2FE82B2D294D33C300FF2B23 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +71,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2F8909E6294D7812009001B8 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		2FE82B2D294D33C300FF2B23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,10 +99,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				2FA0F54929720C3D007EE9C2 /* PBXTargetDependency */,
 			);
 			name = Scratchboard;
 			packageProductDependencies = (
-				2F428A93290CB43C00BF8FE5 /* PhoenixLiveViewNative */,
+				2FA0F54629720BFB007EE9C2 /* LiveViewNative */,
 			);
 			productName = Scratchboard;
 			productReference = 2F428A81290CB40700BF8FE5 /* Scratchboard.app */;
@@ -117,7 +134,7 @@
 			);
 			mainGroup = 2F428A78290CB40700BF8FE5;
 			packageReferences = (
-				2F428A92290CB43C00BF8FE5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
+				2FA0F54529720BFB007EE9C2 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
 			);
 			productRefGroup = 2F428A82290CB40700BF8FE5 /* Products */;
 			projectDirPath = "";
@@ -151,6 +168,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2FA0F54929720C3D007EE9C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2FA0F54829720C3D007EE9C2 /* LiveViewNative */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2F428A8D290CB40800BF8FE5 /* Debug */ = {
@@ -347,7 +371,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2F428A92290CB43C00BF8FE5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
+		2FA0F54529720BFB007EE9C2 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/liveviewnative/liveview-client-swiftui";
 			requirement = {
@@ -358,10 +382,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2F428A93290CB43C00BF8FE5 /* PhoenixLiveViewNative */ = {
+		2FA0F54629720BFB007EE9C2 /* LiveViewNative */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2F428A92290CB43C00BF8FE5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
-			productName = PhoenixLiveViewNative;
+			package = 2FA0F54529720BFB007EE9C2 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
+			productName = LiveViewNative;
+		};
+		2FA0F54829720C3D007EE9C2 /* LiveViewNative */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FA0F54529720BFB007EE9C2 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
+			productName = LiveViewNative;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

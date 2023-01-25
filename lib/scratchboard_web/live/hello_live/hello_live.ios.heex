@@ -1,5 +1,13 @@
-<text modifiers={
-  @native
-  |> frame(alignment: "leading")
-  |> padding(leading: 0.25, trailing: 0.25)
-}>Hello World from iOS!</text>
+<vstack id="hello-ios">
+  <hstack>
+    <text>Hello iOS!</text>
+  </hstack>
+  <hstack>
+    <text>This button has been pressed <%= assigns[:count] %> times.</text>
+  </hstack>
+  <hstack>
+    <button phx-click="increment-count">
+      <text>Press me</text>
+    </button>
+  </hstack>
+</vstack>

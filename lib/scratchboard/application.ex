@@ -15,9 +15,9 @@ defmodule Scratchboard.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Scratchboard.PubSub},
       # Start the Endpoint (http/https)
-      ScratchboardWeb.Endpoint
+      ScratchboardWeb.Endpoint,
       # Start a worker by calling: Scratchboard.Worker.start_link(arg)
-      # {Scratchboard.Worker, arg}
+      Scratchboard.Counter
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
