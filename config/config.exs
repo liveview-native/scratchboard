@@ -65,6 +65,12 @@ config :live_view_native,
     LiveViewNativeSwiftUi.Platform
   ]
 
+config :live_view_native, LiveViewNativeSwiftUi.Platform,
+  app_name: "Scratchboard",
+  custom_modifiers: [
+    background: ScratchboardWeb.SwiftUI.Modifiers.Background
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

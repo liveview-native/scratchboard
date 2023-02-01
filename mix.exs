@@ -20,7 +20,7 @@ defmodule Scratchboard.MixProject do
   def application do
     [
       mod: {Scratchboard.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :live_view_native_platform]
     ]
   end
 
@@ -50,8 +50,9 @@ defmodule Scratchboard.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.9", only: :dev},
-      {:live_view_native, "~> 0.0.3"},
-      {:live_view_native_swift_ui, "~> 0.0.3"}
+      {:live_view_native, "~> 0.0.4"},
+      {:live_view_native_platform, "~> 0.0.4"},
+      {:live_view_native_swift_ui, "~> 0.0.4"}
     ]
   end
 

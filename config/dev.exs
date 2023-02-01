@@ -82,7 +82,6 @@ config :live_view_native,
   }
 
 config :live_view_native, LiveViewNativeSwiftUi.Platform,
-  app_name: "Scratchboard",
   bundle_name: "DockYard.Scratchboard",
   project_path: "priv/native/ios/Scratchboard/Scratchboard.xcodeproj",
   xcode_path: "/Applications/Xcode-beta.app"
