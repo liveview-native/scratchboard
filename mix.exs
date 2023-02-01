@@ -52,7 +52,7 @@ defmodule Scratchboard.MixProject do
       {:tailwind, "~> 0.1.9", only: :dev},
       {:live_view_native, "~> 0.0.4"},
       {:live_view_native_platform, "~> 0.0.4"},
-      {:live_view_native_swift_ui, "~> 0.0.4"}
+      {:live_view_native_swift_ui, "~> 0.0.5"}
     ]
   end
 
