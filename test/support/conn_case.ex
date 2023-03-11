@@ -19,15 +19,17 @@ defmodule ScratchboardWeb.ConnCase do
 
   using do
     quote do
-      # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
-      import ScratchboardWeb.ConnCase
-
       alias ScratchboardWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
       @endpoint ScratchboardWeb.Endpoint
+
+      use ScratchboardWeb, :verified_routes
+
+      # Import conveniences for testing with connections
+      import Plug.Conn
+      import Phoenix.ConnTest
+      import ScratchboardWeb.ConnCase
     end
   end
 

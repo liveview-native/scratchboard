@@ -6,7 +6,7 @@
     <text>This button has been pressed <%= assigns[:count] %> times.</text>
   </hstack>
   <hstack modifiers={@native |> padding(all: 5)}>
-    <button modifiers={@native |> padding(all: 5) |> tint(color: "#4F46E5")} phx-click="increment-count">
+    <button modifiers={@native |> padding(all: 5)} phx-click="increment-count">
       <text>Press me</text>
     </button>
   </hstack>

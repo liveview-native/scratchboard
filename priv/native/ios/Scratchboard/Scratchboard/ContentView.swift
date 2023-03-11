@@ -8,14 +8,11 @@
 import SwiftUI
 import LiveViewNative
 
+@MainActor
 struct ContentView: View {
+    @State private var session = LiveSessionCoordinator(URL(string: "http://localhost:4000/")!)
+    
     var body: some View {
-        LiveView(coordinator: LiveViewCoordinator(URL(string: "http://localhost:4000")!))
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        LiveView(session: session)
     }
 }

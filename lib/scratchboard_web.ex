@@ -17,6 +17,8 @@ defmodule ScratchboardWeb do
   and import those modules here.
   """
 
+  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: ScratchboardWeb
@@ -24,6 +26,8 @@ defmodule ScratchboardWeb do
       import Plug.Conn
       import ScratchboardWeb.Gettext
       alias ScratchboardWeb.Router.Helpers, as: Routes
+
+      unquote(verified_routes())
     end
   end
 
@@ -35,7 +39,7 @@ defmodule ScratchboardWeb do
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
-        only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
+        only: [view_module: 1, view_template: 1]
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
@@ -89,15 +93,22 @@ defmodule ScratchboardWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
-      import Phoenix.LiveView.Helpers
-
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
       import ScratchboardWeb.ErrorHelpers
       import ScratchboardWeb.Gettext
       alias ScratchboardWeb.Router.Helpers, as: Routes
+      unquote(verified_routes())
+    end
+  end
+
+  def verified_routes do
+    quote do
+      use Phoenix.VerifiedRoutes,
+        endpoint: ScratchboardWeb.Endpoint,
+        router: ScratchboardWeb.Router,
+        statics: ScratchboardWeb.static_paths()
     end
   end
 

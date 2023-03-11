@@ -1,0 +1,56 @@
+<vstack nav-title="SwiftUI Demo">
+  <vstack id="font-weight-ios">
+    <text modifiers={font_weight(@native, weight: :black)}>Black</text>
+    <text modifiers={font_weight(@native, weight: :bold)}>Bold</text>
+    <text modifiers={font_weight(@native, weight: :heavy)}>Heavy</text>
+    <text modifiers={font_weight(@native, weight: :light)}>Light</text>
+    <text modifiers={font_weight(@native, weight: :medium)}>Medium</text>
+    <text modifiers={font_weight(@native, weight: :regular)}>Regular</text>
+    <text modifiers={font_weight(@native, weight: :semibold)}>Semibold</text>
+    <text modifiers={font_weight(@native, weight: :thin)}>Thin</text>
+    <text modifiers={font_weight(@native, weight: :ultra_light)}>Ultra Light</text>
+  </vstack>
+  <vstack>
+    <label modifiers={foreground_style(@native, primary: {:color, :mint})}>Color Text</label>
+    <label modifiers={foreground_style(@native, primary: {:linear_gradient, %{gradient: {:colors, [:red, :orange, :yellow, :green, :blue, :indigo, :purple]}, start_point: {0, 0}, end_point: {1, 1}}})}>
+      Foreground Linear Gradient
+    </label>
+    <label modifiers={foreground_style(@native, primary: {:linear_gradient, %{gradient: {:stops, [{:pink, 0.8}, {:blue, 0.9}]}}})}>
+      Foreground Linear Gradient with Stops
+    </label>
+  </vstack>
+  <vstack>
+    <button id="tint_hex" modifiers={tint(@native, color: "#3EB489")}>Hex Code</button>
+  </vstack>
+  <vstack>
+    <button modifiers={tint(@native, color: :black)}>Black</button>
+    <button modifiers={tint(@native, color: :blue)}>Blue</button>
+    <button modifiers={tint(@native, color: :brown)}>Brown</button>
+    <button modifiers={tint(@native, color: :clear)}>Clear</button>
+    <button modifiers={tint(@native, color: :cyan)}>Cyan</button>
+    <button modifiers={tint(@native, color: :gray)}>Gray</button>
+    <button modifiers={tint(@native, color: :green)}>Green</button>
+    <button modifiers={tint(@native, color: :indigo)}>Indigo</button>
+    <button modifiers={tint(@native, color: :mint)}>Mint</button>
+    <button modifiers={tint(@native, color: :orange)}>Orange</button>
+  </vstack>
+  <vstack>
+    <button modifiers={tint(@native, color: :pink)}>Pink</button>
+    <button modifiers={tint(@native, color: :purple)}>Purple</button>
+    <button modifiers={tint(@native, color: :red)}>Red</button>
+    <button modifiers={tint(@native, color: :teal)}>Teal</button>
+    <button modifiers={tint(@native, color: :white)}>White</button>
+    <button modifiers={tint(@native, color: :yellow)}>Yellow</button>
+    <button modifiers={tint(@native, color: :accent)}>Accent</button>
+    <button modifiers={tint(@native, color: :primary)}>Primary</button>
+    <button modifiers={tint(@native, color: :secondary)}>Secondary</button>
+  </vstack>
+  <vstack>
+    <button modifiers={tint(@native, color: {:srgb, %{white: 0.5, opacity: 0.5}})}>sRGB Grayscale</button>
+    <button modifiers={tint(@native, color: {:srgb, %{red: 0.25, green: 0.25, blue: 0.75, opacity: 0.5}})}>sRGB Red Green Blue</button>
+    <button modifiers={tint(@native, color: {:srgb_linear, %{white: 0.5, opacity: 0.5}})}>sRGB (Linear) Grayscale</button>
+    <button modifiers={tint(@native, color: {:srgb_linear, %{red: 0.25, green: 0.25, blue: 0.75, opacity: 0.5}})}>sRGB (Linear) Red Green Blue</button>
+    <button modifiers={tint(@native, color: {:display_p3, %{white: 0.5, opacity: 0.5}})}>DCI-P3 Grayscale</button>
+    <button modifiers={tint(@native, color: {:display_p3, %{red: 0.25, green: 0.25, blue: 0.75, opacity: 0.5}})}>DCI-P3 Grayscale</button>
+  </vstack>
+</vstack>

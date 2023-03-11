@@ -33,15 +33,17 @@ defmodule Scratchboard.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6.10"},
+      {:phoenix, "~> 1.7"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
+      {:phoenix_view, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.18.7"},
+      {:phoenix_live_view,
+       git: "https://github.com/phoenixframework/phoenix_live_view.git",
+       ref: "d9cacd59f065d75fc0d980cb71f70e3bb40d4e95"},
       {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.7.2"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
@@ -50,9 +52,12 @@ defmodule Scratchboard.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.9", only: :dev},
-      {:live_view_native, "~> 0.0.4"},
-      {:live_view_native_platform, "~> 0.0.4"},
-      {:live_view_native_swift_ui, "~> 0.0.5"}
+      {:live_view_native,
+       git: "https://github.com/liveview-native/live_view_native.git",
+       ref: "f7388b652889e9d0fd46988e5e0448a28a0e6953"},
+      {:live_view_native_swift_ui,
+       git: "https://github.com/liveview-native/liveview-client-swiftui",
+       ref: "6f5d4748651b8c385386a4becfd57482a9f9959b"}
     ]
   end
 

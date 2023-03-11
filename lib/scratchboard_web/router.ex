@@ -15,13 +15,11 @@ defmodule ScratchboardWeb.Router do
   end
 
   if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
-
     scope "/" do
       pipe_through :browser
 
       live "/", ScratchboardWeb.HelloLive
-      live_dashboard "/dashboard", metrics: ScratchboardWeb.Telemetry
+      live "/swift-demo", ScratchboardWeb.SwiftDemoLive
     end
   end
 
