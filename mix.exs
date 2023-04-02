@@ -40,9 +40,7 @@ defmodule Scratchboard.MixProject do
       {:phoenix_html, "~> 3.0"},
       {:phoenix_view, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view,
-       git: "https://github.com/phoenixframework/phoenix_live_view.git",
-       ref: "d9cacd59f065d75fc0d980cb71f70e3bb40d4e95"},
+      {:phoenix_live_view, "~> 0.18.18"},
       {:floki, ">= 0.30.0", only: :test},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
@@ -52,12 +50,8 @@ defmodule Scratchboard.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.9", only: :dev},
-      {:live_view_native,
-       git: "https://github.com/liveview-native/live_view_native.git",
-       ref: "f7388b652889e9d0fd46988e5e0448a28a0e6953"},
-      {:live_view_native_swift_ui,
-       git: "https://github.com/liveview-native/liveview-client-swiftui",
-       ref: "6f5d4748651b8c385386a4becfd57482a9f9959b"}
+      {:live_view_native, "~> 0.0.5"},
+      {:live_view_native_swift_ui, path: "../liveview-client-swiftui"}
     ]
   end
 

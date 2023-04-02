@@ -20,6 +20,7 @@ defmodule ScratchboardWeb.Router do
 
       live "/", ScratchboardWeb.HelloLive
       live "/swift-demo", ScratchboardWeb.SwiftDemoLive
+      live "/swift-demo-mod-syntax", ScratchboardWeb.SwiftDemoLive
     end
   end
 

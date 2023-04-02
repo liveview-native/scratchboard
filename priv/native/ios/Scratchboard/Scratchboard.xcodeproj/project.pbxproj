@@ -11,7 +11,7 @@
 		2F428A87290CB40700BF8FE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F428A86290CB40700BF8FE5 /* ContentView.swift */; };
 		2F428A89290CB40800BF8FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A88290CB40800BF8FE5 /* Assets.xcassets */; };
 		2F428A8C290CB40800BF8FE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */; };
-		2F74256429BC0AA50012938E /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2F74256329BC0AA50012938E /* LiveViewNative */; };
+		2F46D11A29C55D2F007D0656 /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2F46D11929C55D2F007D0656 /* LiveViewNative */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +20,7 @@
 		2F428A86290CB40700BF8FE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F428A88290CB40800BF8FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F46D11529C55C0F007D0656 /* liveview-client-swiftui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-client-swiftui"; path = "../../../../../liveview-client-swiftui"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F74256429BC0AA50012938E /* LiveViewNative in Frameworks */,
+				2F46D11A29C55D2F007D0656 /* LiveViewNative in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +75,7 @@
 		2F8909E6294D7812009001B8 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				2F46D11529C55C0F007D0656 /* liveview-client-swiftui */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -99,11 +101,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				2F6B046B29A02CE100353E01 /* PBXTargetDependency */,
+				2F46D11729C55CE1007D0656 /* PBXTargetDependency */,
 			);
 			name = Scratchboard;
 			packageProductDependencies = (
-				2F74256329BC0AA50012938E /* LiveViewNative */,
+				2F46D11929C55D2F007D0656 /* LiveViewNative */,
 			);
 			productName = Scratchboard;
 			productReference = 2F428A81290CB40700BF8FE5 /* Scratchboard.app */;
@@ -134,7 +136,6 @@
 			);
 			mainGroup = 2F428A78290CB40700BF8FE5;
 			packageReferences = (
-				2F74256229BC0AA50012938E /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
 			);
 			productRefGroup = 2F428A82290CB40700BF8FE5 /* Products */;
 			projectDirPath = "";
@@ -170,9 +171,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2F6B046B29A02CE100353E01 /* PBXTargetDependency */ = {
+		2F46D11729C55CE1007D0656 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 2F6B046A29A02CE100353E01 /* LiveViewNative */;
+			productRef = 2F46D11629C55CE1007D0656 /* LiveViewNative */;
 		};
 /* End PBXTargetDependency section */
 
@@ -370,25 +371,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		2F74256229BC0AA50012938E /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/liveview-native/liveview-client-swiftui";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		2F6B046A29A02CE100353E01 /* LiveViewNative */ = {
+		2F46D11629C55CE1007D0656 /* LiveViewNative */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LiveViewNative;
 		};
-		2F74256329BC0AA50012938E /* LiveViewNative */ = {
+		2F46D11929C55D2F007D0656 /* LiveViewNative */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2F74256229BC0AA50012938E /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
 			productName = LiveViewNative;
 		};
 /* End XCSwiftPackageProductDependency section */

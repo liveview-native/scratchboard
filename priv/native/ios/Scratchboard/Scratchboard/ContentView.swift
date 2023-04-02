@@ -10,7 +10,7 @@ import LiveViewNative
 
 @MainActor
 struct ContentView: View {
-    @State private var session = LiveSessionCoordinator(URL(string: "http://localhost:4000/")!)
+    @State private var session = LiveSessionCoordinator(URL(string: "http://localhost:4000/swift-demo")!)
     
     var body: some View {
         LiveView(session: session)
