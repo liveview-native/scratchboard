@@ -19,8 +19,8 @@ defmodule ScratchboardWeb.Router do
       pipe_through :browser
 
       live "/", ScratchboardWeb.HelloLive
-      live "/swift-demo", ScratchboardWeb.SwiftDemoLive
-      live "/swift-demo-mod-syntax", ScratchboardWeb.SwiftDemoLive
+      live "/counter", ScratchboardWeb.CounterLive
+      live "/swiftui-test-bed", ScratchboardWeb.SwiftDemoLive
     end
   end
 

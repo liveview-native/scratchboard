@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner",
+      "state" : {
+        "revision" : "d8f10d992ef32a4187b78a6df320facf75d631d8",
+        "version" : "2.3.1"
+      }
+    },
+    {
       "identity" : "liveview-client-swiftui",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/supernintendo/liveview-client-swiftui",
+      "location" : "https://github.com/liveview-native/liveview-client-swiftui",
       "state" : {
-        "branch" : "bleeding-edge",
-        "revision" : "cdcd2f8c1951844434f5a9d6e6f32dee71f2af1d"
+        "branch" : "remove-platform-modifier-definitions",
+        "revision" : "19d3b06b4952c6f654f8a0e40bc527251635bd6a"
       }
     },
     {

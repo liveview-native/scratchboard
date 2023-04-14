@@ -1,4 +1,4 @@
-<VStack nav-title="SwiftUI Demo">
+<VStack modifiers={@native |> status_bar_hidden(hidden: true)} nav-title="SwiftUI Test Bed">
   <Spacer />
 
   <%= case @selected_tab do %>
@@ -109,13 +109,6 @@
         <Label modifiers={monospaced(@native, is_active: false)}>This text is not</Label>
         <Label modifiers={monospaced_digit(@native)}>1234567890</Label>
         <Label>1234567890</Label>
-      </VStack>
-
-    <% "offset" -> %>
-      <VStack id="offset">
-        <Text>This text is not offset</Text>
-        <Text modifiers={offset(@native, x: 4, y: 8)}>This text is slightly offset</Text>
-        <Text modifiers={offset(@native, x: 32, y: 64)}>This text is very offset</Text>
       </VStack>
 
     <% "opacity" -> %>

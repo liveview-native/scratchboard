@@ -11,7 +11,9 @@
 		2F428A87290CB40700BF8FE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F428A86290CB40700BF8FE5 /* ContentView.swift */; };
 		2F428A89290CB40800BF8FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A88290CB40800BF8FE5 /* Assets.xcassets */; };
 		2F428A8C290CB40800BF8FE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */; };
-		2FDA59B729D92EA500A6192C /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2FDA59B629D92EA500A6192C /* LiveViewNative */; };
+		2F4BCC4629DA536F00F3C7EE /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 2F4BCC4529DA536F00F3C7EE /* CodeScanner */; };
+		2F4BCC4829DA578500F3C7EE /* MyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4BCC4729DA578500F3C7EE /* MyRegistry.swift */; };
+		2FAC9C7A29E920A400571B2C /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2FAC9C7929E920A400571B2C /* LiveViewNative */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,7 @@
 		2F428A86290CB40700BF8FE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F428A88290CB40800BF8FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F4BCC4729DA578500F3C7EE /* MyRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegistry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,7 +30,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FDA59B729D92EA500A6192C /* LiveViewNative in Frameworks */,
+				2FAC9C7A29E920A400571B2C /* LiveViewNative in Frameworks */,
+				2F4BCC4629DA536F00F3C7EE /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +63,7 @@
 				2F428A86290CB40700BF8FE5 /* ContentView.swift */,
 				2F428A88290CB40800BF8FE5 /* Assets.xcassets */,
 				2F428A8A290CB40800BF8FE5 /* Preview Content */,
+				2F4BCC4729DA578500F3C7EE /* MyRegistry.swift */,
 			);
 			path = Scratchboard;
 			sourceTree = "<group>";
@@ -99,11 +104,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				2F46D11729C55CE1007D0656 /* PBXTargetDependency */,
+				2FAC9C7529E79FF600571B2C /* PBXTargetDependency */,
 			);
 			name = Scratchboard;
 			packageProductDependencies = (
-				2FDA59B629D92EA500A6192C /* LiveViewNative */,
+				2F4BCC4529DA536F00F3C7EE /* CodeScanner */,
+				2FAC9C7929E920A400571B2C /* LiveViewNative */,
 			);
 			productName = Scratchboard;
 			productReference = 2F428A81290CB40700BF8FE5 /* Scratchboard.app */;
@@ -134,7 +140,8 @@
 			);
 			mainGroup = 2F428A78290CB40700BF8FE5;
 			packageReferences = (
-				2FDA59B529D92EA500A6192C /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
+				2F4BCC4429DA536F00F3C7EE /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				2FAC9C7829E920A400571B2C /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
 			);
 			productRefGroup = 2F428A82290CB40700BF8FE5 /* Products */;
 			projectDirPath = "";
@@ -163,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F428A87290CB40700BF8FE5 /* ContentView.swift in Sources */,
+				2F4BCC4829DA578500F3C7EE /* MyRegistry.swift in Sources */,
 				2F428A85290CB40700BF8FE5 /* ScratchboardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,9 +178,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2F46D11729C55CE1007D0656 /* PBXTargetDependency */ = {
+		2FAC9C7529E79FF600571B2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 2F46D11629C55CE1007D0656 /* LiveViewNative */;
+			productRef = 2FAC9C7429E79FF600571B2C /* LiveViewNative */;
 		};
 /* End PBXTargetDependency section */
 
@@ -299,8 +307,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Scratchboard/Preview Content\"";
+				DEVELOPMENT_TEAM = YWHPCY5K6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used by this app to process QR codes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -327,8 +337,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Scratchboard/Preview Content\"";
+				DEVELOPMENT_TEAM = YWHPCY5K6L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used by this app to process QR codes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -371,24 +383,37 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2FDA59B529D92EA500A6192C /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
+		2F4BCC4429DA536F00F3C7EE /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/supernintendo/liveview-client-swiftui";
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
-				branch = "bleeding-edge";
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		2FAC9C7829E920A400571B2C /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/liveview-native/liveview-client-swiftui";
+			requirement = {
+				branch = "remove-platform-modifier-definitions";
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2F46D11629C55CE1007D0656 /* LiveViewNative */ = {
+		2F4BCC4529DA536F00F3C7EE /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F4BCC4429DA536F00F3C7EE /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		2FAC9C7429E79FF600571B2C /* LiveViewNative */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LiveViewNative;
 		};
-		2FDA59B629D92EA500A6192C /* LiveViewNative */ = {
+		2FAC9C7929E920A400571B2C /* LiveViewNative */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2FDA59B529D92EA500A6192C /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
+			package = 2FAC9C7829E920A400571B2C /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
 			productName = LiveViewNative;
 		};
 /* End XCSwiftPackageProductDependency section */
