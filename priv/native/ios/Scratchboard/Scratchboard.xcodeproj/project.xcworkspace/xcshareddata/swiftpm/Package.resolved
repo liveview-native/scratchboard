@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner",
+      "state" : {
+        "revision" : "d8f10d992ef32a4187b78a6df320facf75d631d8",
+        "version" : "2.3.1"
+      }
+    },
+    {
       "identity" : "liveview-client-swiftui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/liveview-native/liveview-client-swiftui",
       "state" : {
-        "branch" : "main",
-        "revision" : "6f5d4748651b8c385386a4becfd57482a9f9959b"
+        "branch" : "remove-platform-modifier-definitions",
+        "revision" : "19d3b06b4952c6f654f8a0e40bc527251635bd6a"
       }
     },
     {
@@ -15,7 +24,7 @@
       "location" : "https://github.com/liveviewnative/liveview-native-core-swift.git",
       "state" : {
         "branch" : "main",
-        "revision" : "0387adcfead5e4d6b84e3edf2f675aa333648451"
+        "revision" : "ffea1b5ff768fd2eeea5d4bdfae606b18517f880"
       }
     },
     {

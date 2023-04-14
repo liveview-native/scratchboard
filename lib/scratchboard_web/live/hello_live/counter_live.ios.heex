@@ -1,0 +1,10 @@
+<VStack id="hello-ios">
+  <HStack modifiers={@native |> padding(all: 5)}>
+    <Text>This button has been pressed <%= assigns[:count] %> times.</Text>
+  </HStack>
+  <HStack modifiers={@native |> padding(all: 5)}>
+    <Button modifiers={@native |> padding(all: 5)} phx-click="increment-count">
+      <Text>Press me</Text>
+    </Button>
+  </HStack>
+</VStack>
