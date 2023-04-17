@@ -50,10 +50,12 @@ defmodule Scratchboard.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.9", only: :dev},
-      {:live_view_native, "~> 0.0.6"},
+      # {:live_view_native, "~> 0.0.6"},
+      {:live_view_native, path: "../live_view_native"},
+      {:live_view_native_jetpack, path: "../liveview-client-jetpack"},
       {:live_view_native_swift_ui,
         git: "https://github.com/liveview-native/liveview-client-swiftui",
-        branch: "remove-platform-modifier-definitions"}
+        branch: "main"}
     ]
   end
 

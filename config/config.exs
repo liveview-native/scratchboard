@@ -62,10 +62,13 @@ config :tailwind,
 # Define platform support for LiveView Native
 config :live_view_native,
   platforms: [
-    LiveViewNativeSwiftUi.Platform
+    LiveViewNativeSwiftUi.Platform,
+    LiveViewNativeJetpack.Platform
   ]
 
 config :live_view_native, LiveViewNativeSwiftUi.Platform, app_name: "Scratchboard"
+
+config :live_view_native, LiveViewNativeJetpack.Platform, app_name: "Scratchboard"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
