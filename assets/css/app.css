@@ -122,3 +122,9 @@
   100% { opacity: 0; }
 }
 
+.italic-true {
+  font-style: italic;
+}
+.italic-false {
+  font-style: normal;
+}

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MobileView.swift
 //  Scratchboard
 //
 //  Created by May Matyi on 10/28/22.
@@ -14,7 +14,7 @@ struct ContentView: View {
         var config = LiveSessionConfiguration()
         config.navigationMode = .enabled
         
-        return LiveSessionCoordinator(URL(string: "http://127.0.0.1:5000/")!, config: config)
+        return LiveSessionCoordinator(URL(string: "http://localhost:4000/")!, config: config)
     }()
 
     var body: some View {

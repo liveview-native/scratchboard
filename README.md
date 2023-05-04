@@ -12,7 +12,7 @@ To run Scratchboard locally, follow these steps:
 
 The Scratchboard app can be used one of two ways:
 
-  * In a web browser, by going to [`localhost:5000`](http://localhost:5000)
+  * In a web browser, by going to [`localhost:4000`](http://localhost:4000)
   * Using a native iOS client by building and running the Xcode project at `priv/native/ios/Scratchboard`
 
 ## About

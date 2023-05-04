@@ -19,7 +19,7 @@ config :scratchboard, Scratchboard.Repo,
 config :scratchboard, ScratchboardWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {0, 0, 0, 0}, port: 5000],
+  http: [ip: {0, 0, 0, 0}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
@@ -82,6 +82,8 @@ config :live_view_native,
   }
 
 config :live_view_native, LiveViewNativeSwiftUi.Platform,
-  bundle_name: "DockYard.Scratchboard",
-  project_path: "priv/native/ios/Scratchboard/Scratchboard.xcodeproj",
-  xcode_path: "/Applications/Xcode-beta.app"
+  simulator_opts: %{
+    bundle_name: "DockYard.Scratchboard",
+    project_path: "priv/native/ios/Scratchboard/Scratchboard.xcodeproj",
+    xcode_path: "/Applications/Xcode-beta.app"
+  }

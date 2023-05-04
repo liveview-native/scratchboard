@@ -20,7 +20,9 @@ defmodule ScratchboardWeb.Router do
 
       live "/", ScratchboardWeb.HelloLive
       live "/counter", ScratchboardWeb.CounterLive
-      live "/swiftui-test-bed", ScratchboardWeb.SwiftDemoLive
+      live "/posts", ScratchboardWeb.PostsLive
+      live "/components-test", ScratchboardWeb.ComponentsTestLive
+      live "/swiftui-modifiers", ScratchboardWeb.SwiftUiModifiersLive
     end
   end
 
