@@ -27,7 +27,7 @@ On both the web and the iOS client, a multiplayer counter demo can be found at `
 
 ### SwiftUI Test Bed
 
-On the iOS client, a catalogue of various SwiftUI components can be viewed at `/swift-ui-test-bed`:
+On the iOS client, a catalogue of various SwiftUI modifiers can be viewed at `/swiftui-modifiers`:
 
 ![SwiftUI Test Bed](./guides/001-swift-ui-test-bed.png)
 
