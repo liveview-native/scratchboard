@@ -11,7 +11,8 @@
 		2F428A87290CB40700BF8FE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F428A86290CB40700BF8FE5 /* ContentView.swift */; };
 		2F428A89290CB40800BF8FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A88290CB40800BF8FE5 /* Assets.xcassets */; };
 		2F428A8C290CB40800BF8FE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */; };
-		2F71B4D029F32370006A4600 /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2F71B4CF29F32370006A4600 /* LiveViewNative */; };
+		2F5166802A03414200C421A5 /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2F51667F2A03414200C421A5 /* LiveViewNative */; };
+		2F5166822A03414200C421A5 /* BuiltinRegistryGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = 2F5166812A03414200C421A5 /* BuiltinRegistryGenerator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +21,6 @@
 		2F428A86290CB40700BF8FE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F428A88290CB40800BF8FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2FACEF5429F31FCE00B09849 /* liveview-client-swiftui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-client-swiftui"; path = "../../../../../liveview-client-swiftui"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,7 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F71B4D029F32370006A4600 /* LiveViewNative in Frameworks */,
+				2F5166802A03414200C421A5 /* LiveViewNative in Frameworks */,
+				2F5166822A03414200C421A5 /* BuiltinRegistryGenerator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +76,6 @@
 		2F8909E6294D7812009001B8 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				2FACEF5429F31FCE00B09849 /* liveview-client-swiftui */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -101,11 +101,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				2FAC9C7529E79FF600571B2C /* PBXTargetDependency */,
 			);
 			name = Scratchboard;
 			packageProductDependencies = (
-				2F71B4CF29F32370006A4600 /* LiveViewNative */,
+				2F51667F2A03414200C421A5 /* LiveViewNative */,
+				2F5166812A03414200C421A5 /* BuiltinRegistryGenerator */,
 			);
 			productName = Scratchboard;
 			productReference = 2F428A81290CB40700BF8FE5 /* Scratchboard.app */;
@@ -136,7 +136,7 @@
 			);
 			mainGroup = 2F428A78290CB40700BF8FE5;
 			packageReferences = (
-				2F4BCC4429DA536F00F3C7EE /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
 			);
 			productRefGroup = 2F428A82290CB40700BF8FE5 /* Products */;
 			projectDirPath = "";
@@ -170,13 +170,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2FAC9C7529E79FF600571B2C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 2FAC9C7429E79FF600571B2C /* LiveViewNative */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2F428A8D290CB40800BF8FE5 /* Debug */ = {
@@ -385,24 +378,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2F4BCC4429DA536F00F3C7EE /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+		2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			repositoryURL = "https://github.com/liveview-native/liveview-client-swiftui";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2F71B4CF29F32370006A4600 /* LiveViewNative */ = {
+		2F51667F2A03414200C421A5 /* LiveViewNative */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
 			productName = LiveViewNative;
 		};
-		2FAC9C7429E79FF600571B2C /* LiveViewNative */ = {
+		2F5166812A03414200C421A5 /* BuiltinRegistryGenerator */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = LiveViewNative;
+			package = 2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
+			productName = BuiltinRegistryGenerator;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
