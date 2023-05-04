@@ -52,7 +52,7 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
   ~Z"""
-  <VStack modifiers={@native |> navigation_title(title: "SwiftUITestBed")}>
+  <VStack modifiers={@native |> navigation_title(title: "SwiftUI Test Bed")}>
     <Spacer />
     <%= case Map.get(@tabs, @selected_tab) do %>
       <% nil -> %>
