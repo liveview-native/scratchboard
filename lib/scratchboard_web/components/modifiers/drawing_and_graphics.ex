@@ -15,6 +15,22 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
     """swiftui
   end
 
+  def blend_mode(%{platform_id: :swiftui} = assigns) do
+    ~Z"""
+    <HStack id="blend_mode">
+      <Color name="system-yellow" modifiers={@native |> frame(width: 50, height: 50, alignment: :center)} />
+      <Color name="system-red"
+        modifiers={
+          @native
+          |> frame(width: 50, height: 50, alignment: :center)
+          |> rotation_effect(angle: {:degrees, 45})
+          |> padding(all: 20)
+        }
+      />
+    </HStack>
+    """swiftui
+  end
+
   def border(%{platform_id: :swiftui} = assigns) do
     ~Z"""
     <VStack id="border">
@@ -60,6 +76,27 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
           Foreground Linear Gradient with Stops
         </Label>
       </HStack>
+    </VStack>
+    """swiftui
+  end
+
+  def mask(%{platform_id: :swiftui} = assigns) do
+    ~Z"""
+    <VStack id="mask">
+      <Spacer />
+      <Image id="heart_image" system-name="envelope.badge.fill"
+        modifiers={
+          @native
+          |> foreground_color(color: :blue)
+          |> font(font: {:system, :large_title})
+          |> mask(alignment: :center, content: :rectangle)
+        }
+      >
+        <mask:rectangle>
+          <Rectangle modifiers={@native |> opacity(opacity: 0.1)} />
+        </mask:rectangle>
+      </Image>
+      <Spacer />
     </VStack>
     """swiftui
   end

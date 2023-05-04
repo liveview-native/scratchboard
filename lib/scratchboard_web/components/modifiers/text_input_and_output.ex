@@ -33,7 +33,6 @@ defmodule ScratchboardWeb.Components.Modifiers.TextInputAndOutput do
     """swiftui
   end
 
-
   def font_design(%{platform_id: :swiftui} = assigns) do
     ~Z"""
     <VStack id="font_design">
@@ -82,6 +81,21 @@ end
       <Text>This text is normal</Text>
       <Text modifiers={text_case(@native, text_case: :uppercase)}>This text is uppercase</Text>
       <Text modifiers={text_case(@native, text_case: :lowercase)}>This text is lowercase</Text>
+    </VStack>
+    """swiftui
+  end
+
+  def text_field(%{platform_id: :swiftui} = assigns) do
+    ~Z"""
+    <VStack id="text_field" modifiers={@native |> padding(all: 50) |> text_field_style(style: :rounded_border)}>
+      <Spacer />
+      <TextField modifiers={text_content_type(@native, text_content_type: :name)}>
+        Name
+      </TextField>
+      <TextField modifiers={text_content_type(@native, text_content_type: :url)}>
+        URL
+      </TextField>
+      <Spacer />
     </VStack>
     """swiftui
   end

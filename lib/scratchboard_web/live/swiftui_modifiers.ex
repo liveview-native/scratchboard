@@ -25,6 +25,7 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
   @tabs %{
     "Aspect Ratio" => &DrawingAndGraphics.aspect_ratio/1,
     "Background" => &LayoutFundamentals.background/1,
+    "Blend Mode" => &DrawingAndGraphics.blend_mode/1,
     "Bold" => &TextInputAndOutput.bold_and_italic/1,
     "Border" => &DrawingAndGraphics.border/1,
     "Disabled" => &ViewConfiguration.disabled/1,
@@ -36,10 +37,12 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
     "Hidden" => &ViewConfiguration.hidden/1,
     "Image Scale" => &Images.image_scale/1,
     "Italic" => &TextInputAndOutput.bold_and_italic/1,
+    "Mask" => &DrawingAndGraphics.mask/1,
     "Monospaced" => &TextInputAndOutput.monospaced/1,
     "Opacity" => &ViewConfiguration.opacity/1,
     "Preferred Color Scheme" => &ViewConfiguration.preferred_color_scheme/1,
     "Text Case" => &TextInputAndOutput.text_case/1,
+    "Text Field" => &TextInputAndOutput.text_field/1,
     "Tint" => &DrawingAndGraphics.tint/1,
     "Z Index" => &LayoutFundamentals.z_index/1,
   }
@@ -49,7 +52,7 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
   ~Z"""
-  <VStack nav-title="SwiftUI Test Bed">
+  <VStack modifiers={@native |> navigation_title(title: "SwiftUI Test Bed")}>
     <Spacer />
     <%= case Map.get(@tabs, @selected_tab) do %>
       <% nil -> %>
