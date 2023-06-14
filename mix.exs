@@ -5,7 +5,7 @@ defmodule Scratchboard.MixProject do
     [
       app: :scratchboard,
       version: "0.1.0",
-      elixir: "~> 1.12",
+      elixir: "~> 1.15.0-rc.1",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -50,8 +50,8 @@ defmodule Scratchboard.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.9", only: :dev},
-      {:live_view_native, "~> 0.0.7"},
-      {:live_view_native_swift_ui, "~> 0.0.7"},
+      {:live_view_native, "~> 0.0.8-rc.0"},
+      {:live_view_native_swift_ui, "~> 0.0.8-rc.0"},
       {:faker, "~> 0.17"}
     ]
   end

@@ -3,8 +3,8 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
   use Phoenix.Component
   use LiveViewNative.Component
 
-  def aspect_ratio(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def aspect_ratio_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <VStack id="aspect_ratio">
       <Spacer />
       <Image id="aspect_test_fit" name="Hamilton" resizable modifiers={@native |> aspect_ratio(content_mode: "fit") |> frame(width: 300, height: 225)} />
@@ -12,11 +12,11 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
       <Image id="aspect_test_fill" name="Hamilton" resizable modifiers={@native |> aspect_ratio(content_mode: "fill") |> frame(width: 300, height: 225)} />
       <Spacer />
     </VStack>
-    """swiftui
+    """
   end
 
-  def blend_mode(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def blend_mode_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <HStack id="blend_mode">
       <Color name="system-yellow" modifiers={@native |> frame(width: 50, height: 50, alignment: :center)} />
       <Color name="system-red"
@@ -28,11 +28,11 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
         }
       />
     </HStack>
-    """swiftui
+    """
   end
 
-  def border(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def border_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <VStack id="border">
       <Text modifiers={border(@native, content: {:color, :purple}, width: 4)}>
         Purple border inside the view bounds.
@@ -41,11 +41,11 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
         Purple border outside the view bounds.
       </Text>
     </VStack>
-    """swiftui
+    """
   end
 
-  def foreground_color(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def foreground_color_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <VStack id="foreground_color">
       <Text modifiers={foreground_color(@native, color: "#7b1fa2")}>
         This text is colored with a hex code
@@ -57,11 +57,11 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
         This text is colored with a system color
       </Text>
     </VStack>
-    """swiftui
+    """
   end
 
-  def foreground_style(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def foreground_style_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <VStack id="foreground_style">
       <HStack>
         <Label modifiers={foreground_style(@native, primary: {:color, :mint})}>Color Text</Label>
@@ -77,11 +77,11 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
         </Label>
       </HStack>
     </VStack>
-    """swiftui
+    """
   end
 
-  def mask(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def mask_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <VStack id="mask">
       <Spacer />
       <Image id="heart_image" system-name="envelope.badge.fill"
@@ -98,11 +98,11 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
       </Image>
       <Spacer />
     </VStack>
-    """swiftui
+    """
   end
 
-  def tint(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def tint_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <VStack id="tint">
       <HStack>
         <Button id="tint_hex" modifiers={tint(@native, color: "#3EB489")}>Hex Code</Button>
@@ -147,6 +147,6 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
         </VStack>
       </HStack>
     </VStack>
-    """swiftui
+    """
   end
 end

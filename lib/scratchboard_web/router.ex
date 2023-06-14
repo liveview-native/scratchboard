@@ -22,6 +22,8 @@ defmodule ScratchboardWeb.Router do
       live "/counter", ScratchboardWeb.CounterLive
       live "/posts", ScratchboardWeb.PostsLive
       live "/components-test", ScratchboardWeb.ComponentsTestLive
+      live "/webview-test", ScratchboardWeb.WebviewLive
+      live "/video-player-test", ScratchboardWeb.VideoPlayerLive
       live "/swiftui-modifiers", ScratchboardWeb.SwiftUiModifiersLive
     end
   end

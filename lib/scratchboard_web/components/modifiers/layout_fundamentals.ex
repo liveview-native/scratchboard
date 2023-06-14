@@ -3,8 +3,8 @@ defmodule ScratchboardWeb.Components.Modifiers.LayoutFundamentals do
   use Phoenix.Component
   use LiveViewNative.Component
 
-  def background(%{platform_id: :swiftui} = assigns) do
-  ~Z"""
+  def background_modifier(%{platform_id: :swiftui} = assigns) do
+  ~SWIFTUI"""
   <VStack id="background">
     <Spacer />
     <HStack id="example_heart">
@@ -23,11 +23,11 @@ defmodule ScratchboardWeb.Components.Modifiers.LayoutFundamentals do
     </HStack>
     <Spacer />
   </VStack>
-  """swiftui
+  """
   end
 
-  def z_index(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def z_index_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <ZStack id="z_index">
       <ZStack>
         <% # Without setting z_index, elements are layered according to order in the template %>
@@ -37,12 +37,12 @@ defmodule ScratchboardWeb.Components.Modifiers.LayoutFundamentals do
       </ZStack>
 
       <ZStack modifiers={@native |> offset(x: 0, y: 128)}>
-        <% # Using z_index, we can override the default layering  %>
+        <% # Using z_index, we can override the default layering %>
         <Circle modifiers={@native |> z_index(value: 3) |> frame(width: 64, height: 64) |> foreground_style(primary: {:color, :red})} />
         <Circle modifiers={@native |> z_index(value: 2) |> frame(width: 64, height: 64) |> offset(x: 8, y: 8) |> foreground_style(primary: {:color, :green})} />
         <Circle modifiers={@native |> z_index(value: 1) |> frame(width: 64, height: 64) |> offset(x: 16, y: 16) |> foreground_style(primary: {:color, :blue}) } />
       </ZStack>
     </ZStack>
-    """swiftui
+    """
   end
 end

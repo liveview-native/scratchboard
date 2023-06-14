@@ -7,7 +7,7 @@ defmodule ScratchboardWeb.PostsLive do
 
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+    ~SWIFTUI"""
     <ScrollView id="posts-demo">
       <VStack>
         <%= for post <- @posts do %>
@@ -24,7 +24,7 @@ defmodule ScratchboardWeb.PostsLive do
         <% end %>
       </VStack>
     </ScrollView>
-    """swiftui
+    """
   end
 
   @impl true

@@ -6,7 +6,7 @@ defmodule ScratchboardWeb.CounterLive do
 
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+    ~SWIFTUI"""
     <VStack id="counter-ios">
       <HStack modifiers={@native |> padding(all: 5)}>
         <Text>This button has been pressed <%= @count %> times.</Text>
@@ -17,7 +17,7 @@ defmodule ScratchboardWeb.CounterLive do
         </Button>
       </HStack>
     </VStack>
-    """swiftui
+    """
   end
 
   @impl true
