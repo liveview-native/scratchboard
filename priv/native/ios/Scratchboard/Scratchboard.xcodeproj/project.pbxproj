@@ -11,7 +11,6 @@
 		2F2F800A2A1D74EF00109EF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F80092A1D74EF00109EF8 /* ContentView.swift */; };
 		2F2F800C2A1D74F000109EF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F800B2A1D74F000109EF8 /* Assets.xcassets */; };
 		2F2F80102A1D74F000109EF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F800F2A1D74F000109EF8 /* Preview Assets.xcassets */; };
-		2F2F80152A1D74F800109EF8 /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2F80142A1D74F800109EF8 /* LiveViewNative */; };
 		2F2F80172A1D74FA00109EF8 /* LiveViewNativeAVKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2F80162A1D74FA00109EF8 /* LiveViewNativeAVKit */; };
 		2F2F80192A1D74FB00109EF8 /* LiveViewNativeWebView in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2F80182A1D74FB00109EF8 /* LiveViewNativeWebView */; };
 /* End PBXBuildFile section */
@@ -29,13 +28,13 @@
 		2F2F800B2A1D74F000109EF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F2F800D2A1D74F000109EF8 /* Scratchboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scratchboard.entitlements; sourceTree = "<group>"; };
 		2F2F800F2A1D74F000109EF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2F3E49E42A1559770077C650 /* liveview-client-swiftui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-client-swiftui"; path = "../../../../../liveview-client-swiftui"; sourceTree = "<group>"; };
 		2F3E49FA2A16D71B0077C650 /* liveview-native-webview */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-native-webview"; path = "../../../../../liveview-native-webview"; sourceTree = "<group>"; };
 		2F428A84290CB40700BF8FE5 /* ScratchboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchboardApp.swift; sourceTree = "<group>"; };
 		2F428A86290CB40700BF8FE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F428A88290CB40800BF8FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F903F732A1D65190027401F /* liveview-native-swiftui-avkit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-native-swiftui-avkit"; path = "../../../../../liveview-native-swiftui-avkit"; sourceTree = "<group>"; };
+		2F9DD6CA2A3A72E300B841FD /* liveview-client-swiftui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-client-swiftui"; path = "../../../../../liveview-client-swiftui"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +43,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F2F80172A1D74FA00109EF8 /* LiveViewNativeAVKit in Frameworks */,
-				2F2F80152A1D74F800109EF8 /* LiveViewNative in Frameworks */,
 				2F2F80192A1D74FB00109EF8 /* LiveViewNativeWebView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,7 +131,7 @@
 		2F8909E6294D7812009001B8 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				2F3E49E42A1559770077C650 /* liveview-client-swiftui */,
+				2F9DD6CA2A3A72E300B841FD /* liveview-client-swiftui */,
 				2F3E49FA2A16D71B0077C650 /* liveview-native-webview */,
 				2F903F732A1D65190027401F /* liveview-native-swiftui-avkit */,
 			);
@@ -169,7 +167,6 @@
 			);
 			name = Scratchboard;
 			packageProductDependencies = (
-				2F2F80142A1D74F800109EF8 /* LiveViewNative */,
 				2F2F80162A1D74FA00109EF8 /* LiveViewNativeAVKit */,
 				2F2F80182A1D74FB00109EF8 /* LiveViewNativeWebView */,
 			);
@@ -202,7 +199,6 @@
 			);
 			mainGroup = 2F428A78290CB40700BF8FE5;
 			packageReferences = (
-				2F3E49EF2A1571B20077C650 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
 			);
 			productRefGroup = 2F428A82290CB40700BF8FE5 /* Products */;
 			projectDirPath = "";
@@ -466,22 +462,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		2F3E49EF2A1571B20077C650 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/liveview-native/liveview-client-swiftui";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		2F2F80142A1D74F800109EF8 /* LiveViewNative */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LiveViewNative;
-		};
 		2F2F80162A1D74FA00109EF8 /* LiveViewNativeAVKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LiveViewNativeAVKit;

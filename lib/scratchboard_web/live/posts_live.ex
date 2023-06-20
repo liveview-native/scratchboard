@@ -17,7 +17,7 @@ defmodule ScratchboardWeb.PostsLive do
               @native
               |> padding(all: 5)
               |> font_weight(weight: post.font_weight)
-              |> foreground_style(primary: {:color, post.color})
+              |> foreground_style({:color, post.color})
             }>
             <%= post.body %>
           </HStack>

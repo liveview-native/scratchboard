@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct ScratchboardApp: App {
     var body: some Scene {
-        
         WindowGroup {
             ContentView()
         }

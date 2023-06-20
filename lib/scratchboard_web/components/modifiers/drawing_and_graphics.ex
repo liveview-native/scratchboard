@@ -7,9 +7,9 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
     ~SWIFTUI"""
     <VStack id="aspect_ratio">
       <Spacer />
-      <Image id="aspect_test_fit" name="Hamilton" resizable modifiers={@native |> aspect_ratio(content_mode: "fit") |> frame(width: 300, height: 225)} />
+      <Image id="aspect_test_fit" name="Hamilton" resizable modifiers={aspect_ratio(content_mode: "fit") |> frame(width: 300, height: 225)} />
       <Spacer />
-      <Image id="aspect_test_fill" name="Hamilton" resizable modifiers={@native |> aspect_ratio(content_mode: "fill") |> frame(width: 300, height: 225)} />
+      <Image id="aspect_test_fill" name="Hamilton" resizable modifiers={aspect_ratio(content_mode: "fill") |> frame(width: 300, height: 225)} />
       <Spacer />
     </VStack>
     """
@@ -47,13 +47,13 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
   def foreground_color_modifier(%{platform_id: :swiftui} = assigns) do
     ~SWIFTUI"""
     <VStack id="foreground_color">
-      <Text modifiers={foreground_color(@native, color: "#7b1fa2")}>
+      <Text modifiers={foreground_color(@native, "#7b1fa2")}>
         This text is colored with a hex code
       </Text>
-      <Text modifiers={foreground_color(@native, color: :mint)}>
+      <Text modifiers={foreground_color(@native, :mint)}>
         This text is colored with a standard color
       </Text>
-      <Text modifiers={foreground_color(@native, color: :primary)}>
+      <Text modifiers={foreground_color(@native, :primary)}>
         This text is colored with a system color
       </Text>
     </VStack>
@@ -64,15 +64,15 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
     ~SWIFTUI"""
     <VStack id="foreground_style">
       <HStack>
-        <Label modifiers={foreground_style(@native, primary: {:color, :mint})}>Color Text</Label>
+        <Label modifiers={foreground_style({:color, :mint})}>Color Text</Label>
       </HStack>
       <HStack>
-        <Label modifiers={foreground_style(@native, primary: {:linear_gradient, %{gradient: {:colors, [:red, :orange, :yellow, :green, :blue, :indigo, :purple]}, start_point: {0, 0}, end_point: {1, 1}}})}>
+        <Label modifiers={foreground_style({:linear_gradient, %{gradient: {:colors, [:red, :orange, :yellow, :green, :blue, :indigo, :purple]}, start_point: {0, 0}, end_point: {1, 1}}})}>
           Foreground Linear Gradient
         </Label>
       </HStack>
       <HStack>
-        <Label modifiers={foreground_style(@native, primary: {:linear_gradient, %{gradient: {:stops, [{:pink, 0.8}, {:blue, 0.9}]}}})}>
+        <Label modifiers={foreground_style({:linear_gradient, %{gradient: {:stops, [{:pink, 0.8}, {:blue, 0.9}]}}})}>
           Foreground Linear Gradient with Stops
         </Label>
       </HStack>
@@ -87,7 +87,7 @@ defmodule ScratchboardWeb.Components.Modifiers.DrawingAndGraphics do
       <Image id="heart_image" system-name="envelope.badge.fill"
         modifiers={
           @native
-          |> foreground_color(color: :blue)
+          |> foreground_color(:blue)
           |> font(font: {:system, :large_title})
           |> mask(alignment: :center, content: :rectangle)
         }

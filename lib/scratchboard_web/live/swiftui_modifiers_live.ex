@@ -23,32 +23,32 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
   # alias ScratchboardWeb.Components.Modifiers.ViewStyles
 
   @tabs %{
-    "Aspect Ratio" => &DrawingAndGraphics.aspect_ratio_modifier/1,
+    "Aspect Ratio" => &DrawingAndGraphics.aspect_ratio_modifier/1, ###
     "Background" => &LayoutFundamentals.background_modifier/1,
     "Blend Mode" => &DrawingAndGraphics.blend_mode_modifier/1,
-    "Bold" => &TextInputAndOutput.bold_and_italic_modifier/1,
+    "Bold" => &TextInputAndOutput.bold_and_italic_modifier/1, ###
     "Border" => &DrawingAndGraphics.border_modifier/1,
-    "Disabled" => &ViewConfiguration.disabled_modifier/1,
-    "Dynamic Type Size" => &TextInputAndOutput.dynamic_type_size_modifier/1,
-    "Font Design" => &TextInputAndOutput.font_design_modifier/1,
-    "Foreground Color" => &DrawingAndGraphics.foreground_color_modifier/1,
-    "Foreground Style" => &DrawingAndGraphics.foreground_style_modifier/1,
-    "Font Weight" => &TextInputAndOutput.font_weight_modifier/1,
-    "Hidden" => &ViewConfiguration.hidden_modifier/1,
-    "Image Scale" => &Images.image_scale_modifier/1,
-    "Italic" => &TextInputAndOutput.bold_and_italic_modifier/1,
+    "Disabled" => &ViewConfiguration.disabled_modifier/1, ###
+    "Dynamic Type Size" => &TextInputAndOutput.dynamic_type_size_modifier/1, ###
+    "Font Design" => &TextInputAndOutput.font_design_modifier/1, ###
+    "Foreground Color" => &DrawingAndGraphics.foreground_color_modifier/1, ###
+    "Foreground Style" => &DrawingAndGraphics.foreground_style_modifier/1, ###
+    "Font Weight" => &TextInputAndOutput.font_weight_modifier/1, ###
+    "Hidden" => &ViewConfiguration.hidden_modifier/1, ###
+    "Image Scale" => &Images.image_scale_modifier/1, ###
+    "Italic" => &TextInputAndOutput.bold_and_italic_modifier/1, ###
     "Mask" => &DrawingAndGraphics.mask_modifier/1,
-    "Monospaced" => &TextInputAndOutput.monospaced_modifier/1,
-    "Opacity" => &ViewConfiguration.opacity_modifier/1,
+    "Monospaced" => &TextInputAndOutput.monospaced_modifier/1, ###
+    "Opacity" => &ViewConfiguration.opacity_modifier/1, ###
     "Preferred Color Scheme" => &ViewConfiguration.preferred_color_scheme_modifier/1,
     # "Swipe Actions" => &Lists.swipe_actions_modifier/1,
     "Text Case" => &TextInputAndOutput.text_case_modifier/1,
     "Text Field" => &TextInputAndOutput.text_field_modifier/1,
     "Tint" => &DrawingAndGraphics.tint_modifier/1,
-    "Z Index" => &LayoutFundamentals.z_index_modifier/1
+    "Z Index" => &LayoutFundamentals.z_index_modifier/1 ###
   }
 
-  native_binding :selected_tab, String, "Bold"
+  native_binding :selected_tab, String, "Monospaced"
 
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
@@ -91,7 +91,6 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
     Process.send_after(self(), :tick, 1_000)
 
     {:ok, assign(socket,
-      selected_tab: "Bold",
       tabs: @tabs,
       tick: :tick
     )}
