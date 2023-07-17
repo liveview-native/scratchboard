@@ -2,46 +2,33 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
   use Phoenix.LiveView
   use LiveViewNative.LiveView
 
-  # alias ScratchboardWeb.Components.Modifiers.Animation
-  # alias ScratchboardWeb.Components.Modifiers.ControlsAndIndicators
-  # alias ScratchboardWeb.Components.Modifiers.Documents
   alias ScratchboardWeb.Components.Modifiers.DrawingAndGraphics
-  # alias ScratchboardWeb.Components.Modifiers.Gestures
   alias ScratchboardWeb.Components.Modifiers.Images
-  # alias ScratchboardWeb.Components.Modifiers.InputEvents
-  # alias ScratchboardWeb.Components.Modifiers.LayoutAdjustments
   alias ScratchboardWeb.Components.Modifiers.LayoutFundamentals
-  # alias ScratchboardWeb.Components.Modifiers.Lists
-  # alias ScratchboardWeb.Components.Modifiers.ModalPresentations
-  # alias ScratchboardWeb.Components.Modifiers.Navigation
-  # alias ScratchboardWeb.Components.Modifiers.ScrollViews
-  # alias ScratchboardWeb.Components.Modifiers.Search
+  alias ScratchboardWeb.Components.Modifiers.Lists
   alias ScratchboardWeb.Components.Modifiers.TextInputAndOutput
-  # alias ScratchboardWeb.Components.Modifiers.Toolbar
   alias ScratchboardWeb.Components.Modifiers.ViewConfiguration
-  # alias ScratchboardWeb.Components.Modifiers.ViewFundamentals
-  # alias ScratchboardWeb.Components.Modifiers.ViewStyles
 
   @tabs %{
-    "Aspect Ratio" => &DrawingAndGraphics.aspect_ratio_modifier/1, ###
+    "Aspect Ratio" => &DrawingAndGraphics.aspect_ratio_modifier/1,
     "Background" => &LayoutFundamentals.background_modifier/1,
     "Blend Mode" => &DrawingAndGraphics.blend_mode_modifier/1,
-    "Bold" => &TextInputAndOutput.bold_and_italic_modifier/1, ###
+    "Bold" => &TextInputAndOutput.bold_and_italic_modifier/1,
     "Border" => &DrawingAndGraphics.border_modifier/1,
-    "Disabled" => &ViewConfiguration.disabled_modifier/1, ###
-    "Dynamic Type Size" => &TextInputAndOutput.dynamic_type_size_modifier/1, ###
-    "Font Design" => &TextInputAndOutput.font_design_modifier/1, ###
-    "Foreground Color" => &DrawingAndGraphics.foreground_color_modifier/1, ###
-    "Foreground Style" => &DrawingAndGraphics.foreground_style_modifier/1, ###
-    "Font Weight" => &TextInputAndOutput.font_weight_modifier/1, ###
-    "Hidden" => &ViewConfiguration.hidden_modifier/1, ###
-    "Image Scale" => &Images.image_scale_modifier/1, ###
-    "Italic" => &TextInputAndOutput.bold_and_italic_modifier/1, ###
+    "Disabled" => &ViewConfiguration.disabled_modifier/1,
+    "Dynamic Type Size" => &TextInputAndOutput.dynamic_type_size_modifier/1,
+    "Font Design" => &TextInputAndOutput.font_design_modifier/1,
+    "Foreground Color" => &DrawingAndGraphics.foreground_color_modifier/1,
+    "Foreground Style" => &DrawingAndGraphics.foreground_style_modifier/1,
+    "Font Weight" => &TextInputAndOutput.font_weight_modifier/1,
+    "Hidden" => &ViewConfiguration.hidden_modifier/1,
+    "Image Scale" => &Images.image_scale_modifier/1,
+    "Italic" => &TextInputAndOutput.bold_and_italic_modifier/1,
     "Mask" => &DrawingAndGraphics.mask_modifier/1,
-    "Monospaced" => &TextInputAndOutput.monospaced_modifier/1, ###
-    "Opacity" => &ViewConfiguration.opacity_modifier/1, ###
+    "Monospaced" => &TextInputAndOutput.monospaced_modifier/1,
+    "Opacity" => &ViewConfiguration.opacity_modifier/1,
     "Preferred Color Scheme" => &ViewConfiguration.preferred_color_scheme_modifier/1,
-    # "Swipe Actions" => &Lists.swipe_actions_modifier/1,
+    "Swipe Actions" => &Lists.swipe_actions_modifier/1,
     "Text Case" => &TextInputAndOutput.text_case_modifier/1,
     "Text Field" => &TextInputAndOutput.text_field_modifier/1,
     "Tint" => &DrawingAndGraphics.tint_modifier/1,
@@ -69,7 +56,7 @@ defmodule ScratchboardWeb.SwiftUiModifiersLive do
       <Text template={:label}>Section</Text>
       <Group template={:content}>
         <%= for {tab, _component} <- @tabs do %>
-          <Label id={tab} modifiers={~s([{"type": "tag", "value": "#{tab}"}])}>
+          <Label id={tab} tag={tab}>
             <Text><%= tab %></Text>
           </Label>
         <% end %>

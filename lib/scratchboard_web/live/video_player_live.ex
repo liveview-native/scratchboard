@@ -5,7 +5,6 @@ defmodule ScratchboardWeb.VideoPlayerLive do
   native_binding :is_muted, Atom, false
   native_binding :time_control_status, String, ""
   native_binding :playback_time, Float, 0.0
-  native_binding :playback_time_update_interval, Float, 0.05
 
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
@@ -18,7 +17,7 @@ defmodule ScratchboardWeb.VideoPlayerLive do
         autoplay="true"
         is-muted="is_muted"
         playback-time="playback_time"
-        playback-time-update-interval="playback_time_update_interval"
+        playback-time-update-interval="0.5"
         on-play="handle_play"
         on-pause="handle_pause"
         time-control-status="time_control_status"

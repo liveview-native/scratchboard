@@ -51,7 +51,7 @@ defmodule Scratchboard.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:tailwind, "~> 0.1.9", only: :dev},
       {:live_view_native, "~> 0.0.8"},
-      {:live_view_native_swift_ui, "~> 0.0.8"},
+      {:live_view_native_swift_ui, "~> 0.0.9"},
       {:faker, "~> 0.17"}
     ]
   end

@@ -6,7 +6,7 @@ defmodule ScratchboardWeb.WebviewLive do
   def render(%{platform_id: :swiftui} = assigns) do
     ~SWIFTUI"""
     <VStack id="webview-example">
-      <WebView url="https://elixir-lang.org/" />
+      <WebView url="http://localhost:4000/counter" />
     </VStack>
     """
   end
