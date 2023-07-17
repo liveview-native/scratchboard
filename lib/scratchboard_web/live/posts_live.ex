@@ -7,7 +7,7 @@ defmodule ScratchboardWeb.PostsLive do
 
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+    ~SWIFTUI"""
     <ScrollView id="posts-demo">
       <VStack>
         <%= for post <- @posts do %>
@@ -17,14 +17,14 @@ defmodule ScratchboardWeb.PostsLive do
               @native
               |> padding(all: 5)
               |> font_weight(weight: post.font_weight)
-              |> foreground_style(primary: {:color, post.color})
+              |> foreground_style({:color, post.color})
             }>
             <%= post.body %>
           </HStack>
         <% end %>
       </VStack>
     </ScrollView>
-    """swiftui
+    """
   end
 
   @impl true

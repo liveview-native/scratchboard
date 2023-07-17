@@ -4,25 +4,35 @@ defmodule ScratchboardWeb.HelloLive do
 
   @impl true
   def render(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+    ~SWIFTUI"""
     <VStack id="hello-ios">
       <Spacer />
-      <HStack modifiers={@native |> padding(all: 5)}>
+      <HStack modifiers={padding(all: 5)}>
         <Text>Hello iOS!</Text>
       </HStack>
       <Spacer />
-      <HStack modifiers={@native |> padding(all: 5)}>
+      <HStack modifiers={padding(all: 5)}>
         <NavigationLink destination={"/counter"}>
           <Text>Counter Demo</Text>
         </NavigationLink>
       </HStack>
-      <HStack modifiers={@native |> padding(all: 5)}>
+      <HStack modifiers={padding(all: 5)}>
         <NavigationLink destination={"/swiftui-modifiers"}>
           <Text>SwiftUI Modifiers</Text>
         </NavigationLink>
       </HStack>
+      <HStack modifiers={padding(all: 5)}>
+        <NavigationLink destination={"/webview-test"}>
+          <Text>WebView Example</Text>
+        </NavigationLink>
+      </HStack>
+      <HStack modifiers={padding(all: 5)}>
+        <NavigationLink destination={"/video-player-test"}>
+          <Text>Video Player Example</Text>
+        </NavigationLink>
+      </HStack>
     </VStack>
-    """swiftui
+    """
   end
 
   @impl true

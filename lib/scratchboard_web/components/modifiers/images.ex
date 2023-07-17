@@ -3,8 +3,8 @@ defmodule ScratchboardWeb.Components.Modifiers.Images do
   use Phoenix.Component
   use LiveViewNative.Component
 
-  def image_scale(%{platform_id: :swiftui} = assigns) do
-    ~Z"""
+  def image_scale_modifier(%{platform_id: :swiftui} = assigns) do
+    ~SWIFTUI"""
     <VStack>
       <HStack modifiers={image_scale(@native, scale: :small)}>
         <Image system-name="heart.fill"></Image>
@@ -19,6 +19,6 @@ defmodule ScratchboardWeb.Components.Modifiers.Images do
         <Text>Large</Text>
       </HStack>
     </VStack>
-    """swiftui
+    """
   end
 end

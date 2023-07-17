@@ -7,40 +7,95 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F428A85290CB40700BF8FE5 /* ScratchboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F428A84290CB40700BF8FE5 /* ScratchboardApp.swift */; };
-		2F428A87290CB40700BF8FE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F428A86290CB40700BF8FE5 /* ContentView.swift */; };
-		2F428A89290CB40800BF8FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A88290CB40800BF8FE5 /* Assets.xcassets */; };
-		2F428A8C290CB40800BF8FE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */; };
-		2F5166802A03414200C421A5 /* LiveViewNative in Frameworks */ = {isa = PBXBuildFile; productRef = 2F51667F2A03414200C421A5 /* LiveViewNative */; };
-		2F5166822A03414200C421A5 /* BuiltinRegistryGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = 2F5166812A03414200C421A5 /* BuiltinRegistryGenerator */; };
+		2F2F80082A1D74EF00109EF8 /* ScratchboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F80072A1D74EF00109EF8 /* ScratchboardApp.swift */; };
+		2F2F800A2A1D74EF00109EF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2F80092A1D74EF00109EF8 /* ContentView.swift */; };
+		2F2F800C2A1D74F000109EF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F800B2A1D74F000109EF8 /* Assets.xcassets */; };
+		2F2F80102A1D74F000109EF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2F800F2A1D74F000109EF8 /* Preview Assets.xcassets */; };
+		2F2F80172A1D74FA00109EF8 /* LiveViewNativeAVKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2F80162A1D74FA00109EF8 /* LiveViewNativeAVKit */; };
+		2F2F80192A1D74FB00109EF8 /* LiveViewNativeWebView in Frameworks */ = {isa = PBXBuildFile; productRef = 2F2F80182A1D74FB00109EF8 /* LiveViewNativeWebView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2F428A81290CB40700BF8FE5 /* Scratchboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratchboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F2F7FEB2A1D744000109EF8 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		2F2F7FED2A1D744400109EF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2F2F7FF52A1D74A200109EF8 /* ScratchboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchboardApp.swift; sourceTree = "<group>"; };
+		2F2F7FF72A1D74A200109EF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2F2F7FF92A1D74A300109EF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F2F7FFC2A1D74A300109EF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F2F80052A1D74EF00109EF8 /* Scratchboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratchboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F2F80072A1D74EF00109EF8 /* ScratchboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchboardApp.swift; sourceTree = "<group>"; };
+		2F2F80092A1D74EF00109EF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2F2F800B2A1D74F000109EF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F2F800D2A1D74F000109EF8 /* Scratchboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scratchboard.entitlements; sourceTree = "<group>"; };
+		2F2F800F2A1D74F000109EF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F3E49FA2A16D71B0077C650 /* liveview-native-webview */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-native-webview"; path = "../../../../../liveview-native-webview"; sourceTree = "<group>"; };
 		2F428A84290CB40700BF8FE5 /* ScratchboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchboardApp.swift; sourceTree = "<group>"; };
 		2F428A86290CB40700BF8FE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F428A88290CB40800BF8FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F428A8B290CB40800BF8FE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F903F732A1D65190027401F /* liveview-native-swiftui-avkit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-native-swiftui-avkit"; path = "../../../../../liveview-native-swiftui-avkit"; sourceTree = "<group>"; };
+		2F9DD6CA2A3A72E300B841FD /* liveview-client-swiftui */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "liveview-client-swiftui"; path = "../../../../../liveview-client-swiftui"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2F428A7E290CB40700BF8FE5 /* Frameworks */ = {
+		2F2F80022A1D74EF00109EF8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F5166802A03414200C421A5 /* LiveViewNative in Frameworks */,
-				2F5166822A03414200C421A5 /* BuiltinRegistryGenerator in Frameworks */,
+				2F2F80172A1D74FA00109EF8 /* LiveViewNativeAVKit in Frameworks */,
+				2F2F80192A1D74FB00109EF8 /* LiveViewNativeWebView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F2F7FF42A1D74A200109EF8 /* Scratchboard */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F7FF52A1D74A200109EF8 /* ScratchboardApp.swift */,
+				2F2F7FF72A1D74A200109EF8 /* ContentView.swift */,
+				2F2F7FF92A1D74A300109EF8 /* Assets.xcassets */,
+				2F2F7FFB2A1D74A300109EF8 /* Preview Content */,
+			);
+			path = Scratchboard;
+			sourceTree = "<group>";
+		};
+		2F2F7FFB2A1D74A300109EF8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F7FFC2A1D74A300109EF8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2F2F80062A1D74EF00109EF8 /* Scratchboard */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F80072A1D74EF00109EF8 /* ScratchboardApp.swift */,
+				2F2F80092A1D74EF00109EF8 /* ContentView.swift */,
+				2F2F800B2A1D74F000109EF8 /* Assets.xcassets */,
+				2F2F800D2A1D74F000109EF8 /* Scratchboard.entitlements */,
+				2F2F800E2A1D74F000109EF8 /* Preview Content */,
+			);
+			path = Scratchboard;
+			sourceTree = "<group>";
+		};
+		2F2F800E2A1D74F000109EF8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2F2F800F2A1D74F000109EF8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		2F428A78290CB40700BF8FE5 = {
 			isa = PBXGroup;
 			children = (
 				2F8909E6294D7812009001B8 /* Packages */,
 				2F428A83290CB40700BF8FE5 /* Scratchboard */,
+				2F2F7FF42A1D74A200109EF8 /* Scratchboard */,
+				2F2F80062A1D74EF00109EF8 /* Scratchboard */,
 				2F428A82290CB40700BF8FE5 /* Products */,
 				2FE82B2D294D33C300FF2B23 /* Frameworks */,
 			);
@@ -49,7 +104,7 @@
 		2F428A82290CB40700BF8FE5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2F428A81290CB40700BF8FE5 /* Scratchboard.app */,
+				2F2F80052A1D74EF00109EF8 /* Scratchboard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +131,9 @@
 		2F8909E6294D7812009001B8 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				2F9DD6CA2A3A72E300B841FD /* liveview-client-swiftui */,
+				2F3E49FA2A16D71B0077C650 /* liveview-native-webview */,
+				2F903F732A1D65190027401F /* liveview-native-swiftui-avkit */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -83,6 +141,8 @@
 		2FE82B2D294D33C300FF2B23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F2F7FED2A1D744400109EF8 /* AVFoundation.framework */,
+				2F2F7FEB2A1D744000109EF8 /* AVKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -90,25 +150,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2F428A80290CB40700BF8FE5 /* Scratchboard */ = {
+		2F2F80042A1D74EF00109EF8 /* Scratchboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F428A8F290CB40800BF8FE5 /* Build configuration list for PBXNativeTarget "Scratchboard" */;
+			buildConfigurationList = 2F2F80112A1D74F000109EF8 /* Build configuration list for PBXNativeTarget "Scratchboard" */;
 			buildPhases = (
-				2F428A7D290CB40700BF8FE5 /* Sources */,
-				2F428A7E290CB40700BF8FE5 /* Frameworks */,
-				2F428A7F290CB40700BF8FE5 /* Resources */,
+				2F2F80012A1D74EF00109EF8 /* Sources */,
+				2F2F80022A1D74EF00109EF8 /* Frameworks */,
+				2F2F80032A1D74EF00109EF8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2F2F801B2A1D759E00109EF8 /* PBXTargetDependency */,
+				2F2F801F2A1D75A300109EF8 /* PBXTargetDependency */,
+				2F2F801D2A1D75A100109EF8 /* PBXTargetDependency */,
 			);
 			name = Scratchboard;
 			packageProductDependencies = (
-				2F51667F2A03414200C421A5 /* LiveViewNative */,
-				2F5166812A03414200C421A5 /* BuiltinRegistryGenerator */,
+				2F2F80162A1D74FA00109EF8 /* LiveViewNativeAVKit */,
+				2F2F80182A1D74FB00109EF8 /* LiveViewNativeWebView */,
 			);
 			productName = Scratchboard;
-			productReference = 2F428A81290CB40700BF8FE5 /* Scratchboard.app */;
+			productReference = 2F2F80052A1D74EF00109EF8 /* Scratchboard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,11 +181,11 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					2F428A80290CB40700BF8FE5 = {
-						CreatedOnToolsVersion = 14.0;
+					2F2F80042A1D74EF00109EF8 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
@@ -136,42 +199,132 @@
 			);
 			mainGroup = 2F428A78290CB40700BF8FE5;
 			packageReferences = (
-				2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */,
 			);
 			productRefGroup = 2F428A82290CB40700BF8FE5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2F428A80290CB40700BF8FE5 /* Scratchboard */,
+				2F2F80042A1D74EF00109EF8 /* Scratchboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2F428A7F290CB40700BF8FE5 /* Resources */ = {
+		2F2F80032A1D74EF00109EF8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F428A8C290CB40800BF8FE5 /* Preview Assets.xcassets in Resources */,
-				2F428A89290CB40800BF8FE5 /* Assets.xcassets in Resources */,
+				2F2F80102A1D74F000109EF8 /* Preview Assets.xcassets in Resources */,
+				2F2F800C2A1D74F000109EF8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2F428A7D290CB40700BF8FE5 /* Sources */ = {
+		2F2F80012A1D74EF00109EF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F428A87290CB40700BF8FE5 /* ContentView.swift in Sources */,
-				2F428A85290CB40700BF8FE5 /* ScratchboardApp.swift in Sources */,
+				2F2F800A2A1D74EF00109EF8 /* ContentView.swift in Sources */,
+				2F2F80082A1D74EF00109EF8 /* ScratchboardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2F2F801B2A1D759E00109EF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2F2F801A2A1D759E00109EF8 /* LiveViewNative */;
+		};
+		2F2F801D2A1D75A100109EF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2F2F801C2A1D75A100109EF8 /* LiveViewNativeWebView */;
+		};
+		2F2F801F2A1D75A300109EF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2F2F801E2A1D75A300109EF8 /* LiveViewNativeAVKit */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2F2F80122A1D74F000109EF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scratchboard/Scratchboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Scratchboard/Preview Content\"";
+				DEVELOPMENT_TEAM = YWHPCY5K6L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DockYard.Scratchboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2F2F80132A1D74F000109EF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scratchboard/Scratchboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Scratchboard/Preview Content\"";
+				DEVELOPMENT_TEAM = YWHPCY5K6L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = DockYard.Scratchboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2F428A8D290CB40800BF8FE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -286,77 +439,18 @@
 			};
 			name = Release;
 		};
-		2F428A90290CB40800BF8FE5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Scratchboard/Preview\\ Content";
-				DEVELOPMENT_TEAM = YWHPCY5K6L;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used by this app to process QR codes.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = DockYard.Scratchboard;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = MayMatyi.Scratchboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2F428A91290CB40800BF8FE5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "Scratchboard/Preview\\ Content";
-				DEVELOPMENT_TEAM = YWHPCY5K6L;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used by this app to process QR codes.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = DockYard.Scratchboard;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = MayMatyi.Scratchboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2F2F80112A1D74F000109EF8 /* Build configuration list for PBXNativeTarget "Scratchboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F2F80122A1D74F000109EF8 /* Debug */,
+				2F2F80132A1D74F000109EF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2F428A7C290CB40700BF8FE5 /* Build configuration list for PBXProject "Scratchboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -366,38 +460,28 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2F428A8F290CB40800BF8FE5 /* Build configuration list for PBXNativeTarget "Scratchboard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2F428A90290CB40800BF8FE5 /* Debug */,
-				2F428A91290CB40800BF8FE5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/liveview-native/liveview-client-swiftui";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		2F51667F2A03414200C421A5 /* LiveViewNative */ = {
+		2F2F80162A1D74FA00109EF8 /* LiveViewNativeAVKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
+			productName = LiveViewNativeAVKit;
+		};
+		2F2F80182A1D74FB00109EF8 /* LiveViewNativeWebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LiveViewNativeWebView;
+		};
+		2F2F801A2A1D759E00109EF8 /* LiveViewNative */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = LiveViewNative;
 		};
-		2F5166812A03414200C421A5 /* BuiltinRegistryGenerator */ = {
+		2F2F801C2A1D75A100109EF8 /* LiveViewNativeWebView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2F51667E2A03414200C421A5 /* XCRemoteSwiftPackageReference "liveview-client-swiftui" */;
-			productName = BuiltinRegistryGenerator;
+			productName = LiveViewNativeWebView;
+		};
+		2F2F801E2A1D75A300109EF8 /* LiveViewNativeAVKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LiveViewNativeAVKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
