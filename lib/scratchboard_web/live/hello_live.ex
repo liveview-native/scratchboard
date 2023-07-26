@@ -3,6 +3,13 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   @impl true
+  def render(%{platform_id: :jetpack} = assigns) do
+    ~JETPACK"""
+    <Text>Hello Android!</Text>
+    """
+  end
+
+  @impl true
   def render(%{platform_id: :swiftui} = assigns) do
     ~SWIFTUI"""
     <VStack id="hello-ios">
