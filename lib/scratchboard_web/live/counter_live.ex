@@ -5,6 +5,23 @@ defmodule ScratchboardWeb.CounterLive do
   alias Scratchboard.Counter
 
   @impl true
+  def render(%{platform_id: :jetpack} = assigns) do
+    ~JETPACK"""
+    <Scaffold>
+      <TopAppBar>
+        <Title>Counter Sample</Title>
+      </TopAppBar>
+      <Column size="fill" verticalArrangement="center" horizontalAlignment="center">
+        <Text>This button has been pressed times.</Text>
+        <Button phx-click="increment-count">
+          <Text>Press me</Text>
+        </Button>
+      </Column>
+    </Scaffold>
+    """
+  end
+
+  @impl true
   def render(%{platform_id: :swiftui} = assigns) do
     ~SWIFTUI"""
     <VStack id="counter-ios">
