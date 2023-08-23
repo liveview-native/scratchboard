@@ -14,6 +14,10 @@ defmodule ScratchboardWeb.HelloLive do
     {:noreply, update(socket, :val, &(&1 - 1))}
   end
 
+  def handle_event("reset", _, socket) do
+    {:noreply, assign(socket, :val, 0)}
+  end
+
   @impl true
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
@@ -22,25 +26,33 @@ defmodule ScratchboardWeb.HelloLive do
         <Title>
           <Text>App title</Text>
         </Title>
-        <Action phx-click="increment-count">
+        <Action phx-click="dec">
           <Icon imageVector="filled:Add" />
         </Action>
-        <NavIcon phx-click="increment-count">
+        <NavIcon phx-click="reset">
           <Icon imageVector="filled:Menu" />
         </NavIcon>
       </TopAppBar>
-      <Column>
+      <Column scroll="vertical">
         <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg"/>
         <Row verticalAlignment="center">
           <RadioButton padding="8"/><Text>Radio</Text>
         </Row>
         <Text>Counter: <%= @val %> </Text>
-        <Card shape="8" padding="8">
-          <Row padding="32">
-            <Text>Card Content 1</Text>
-            <Text>Card Content 2</Text>
-          </Row>
-        </Card>
+        <Row scroll="horizontal">
+          <Card shape="8" padding="8">
+            <Row padding="32">
+              <Text>Card Content 1</Text>
+              <Text>Card Content 2</Text>
+            </Row>
+          </Card>
+          <Card shape="8" padding="8">
+            <Row padding="32">
+              <Text>Card Content 1</Text>
+              <Text>Card Content 2</Text>
+            </Row>
+          </Card>
+        </Row>
         <Spacer height="30" />
         <Row width="fill" horizontalArrangement="spaceEvenly">
           <Text>Row 0 / Column 0</Text>
