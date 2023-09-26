@@ -11,8 +11,20 @@ defmodule Scratchboard.Counter do
     GenServer.start_link(Counter, @initial_state, name: Counter)
   end
 
+  def set_initial(value) do
+    GenServer.call(Counter, {:set_initial, value})
+  end
+
   def increment_count do
     GenServer.call(Counter, :increment_count)
+  end
+
+  def decrement_count do
+    GenServer.call(Counter, :decrement_count)
+  end
+
+  def reset_count do
+    GenServer.call(Counter, :reset_count)
   end
 
   def get_count do
@@ -33,8 +45,35 @@ defmodule Scratchboard.Counter do
     {:ok, initial_state}
   end
 
+  def handle_call({:set_initial, value}, _from, %{subscribers: subscribers} = state) do
+    new_count = value
+    new_state = %{state | count: new_count}
+
+    notify_subscribers(subscribers, new_count)
+
+    {:reply, :ok, new_state}
+  end
+
   def handle_call(:increment_count, _from, %{subscribers: subscribers} = state) do
     new_count = state.count + 1
+    new_state = %{state | count: new_count}
+
+    notify_subscribers(subscribers, new_count)
+
+    {:reply, :ok, new_state}
+  end
+
+  def handle_call(:decrement_count, _from, %{subscribers: subscribers} = state) do
+    new_count = state.count - 1
+    new_state = %{state | count: new_count}
+
+    notify_subscribers(subscribers, new_count)
+
+    {:reply, :ok, new_state}
+  end
+
+  def handle_call(:reset_count, _from, %{subscribers: subscribers} = state) do
+    new_count = 0
     new_state = %{state | count: new_count}
 
     notify_subscribers(subscribers, new_count)

@@ -52,7 +52,7 @@ defmodule Scratchboard.MixProject do
       {:tailwind, "~> 0.1.9", only: :dev},
       {:live_view_native, "~> 0.0.8"},
       {:live_view_native_swift_ui, "~> 0.0.9"},
-      {:live_view_native_jetpack, git: "https://github.com/liveview-native/liveview-client-jetpack", branch: "add-elixir-platform-lib"},
+      {:live_view_native_jetpack, git: "https://github.com/liveview-native/liveview-client-jetpack", branch: "main"},
       {:faker, "~> 0.17"}
     ]
   end

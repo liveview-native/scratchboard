@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :val, 10)}
+    {:ok, assign(socket, :val, 0)}
   end
 
   def handle_event("inc", _, socket) do
@@ -14,8 +14,8 @@ defmodule ScratchboardWeb.HelloLive do
     {:noreply, update(socket, :val, &(&1 - 1))}
   end
 
-  def handle_event("reset", _, socket) do
-    {:noreply, assign(socket, :val, 0)}
+  def handle_event("navigate", _params, socket) do
+    {:noreply, push_navigate(socket, to: "/counter?val=#{socket.assigns.val}")}
   end
 
   @impl true
@@ -23,48 +23,16 @@ defmodule ScratchboardWeb.HelloLive do
     ~JETPACK"""
     <Scaffold>
       <TopAppBar>
-        <Title>
-          <Text>App title</Text>
-        </Title>
-        <Action phx-click="dec">
-          <Icon imageVector="filled:Add" />
-        </Action>
-        <NavIcon phx-click="reset">
-          <Icon imageVector="filled:Menu" />
-        </NavIcon>
+        <Title>Hello</Title>
       </TopAppBar>
-      <Column scroll="vertical">
-        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg"/>
+      <Column size="fill" verticalArrangement="center" horizontalAlignment="center">
+        <Text>Hello Jetpack!</Text>
+        <Button phx-click="navigate"><Text>Go to counter</Text></Button>
         <Row verticalAlignment="center">
-          <RadioButton padding="8"/><Text>Radio</Text>
+          <Button phx-click="dec" padding="8"><Text>-</Text></Button>
+          <Text>This counter: <%= @val %></Text>
+          <Button phx-click="inc" padding="8"><Text>+</Text></Button>
         </Row>
-        <Text>Counter: <%= @val %> </Text>
-        <Row scroll="horizontal">
-          <Card shape="8" padding="8">
-            <Row padding="32">
-              <Text>Card Content 1</Text>
-              <Text>Card Content 2</Text>
-            </Row>
-          </Card>
-          <Card shape="8" padding="8">
-            <Row padding="32">
-              <Text>Card Content 1</Text>
-              <Text>Card Content 2</Text>
-            </Row>
-          </Card>
-        </Row>
-        <Spacer height="30" />
-        <Row width="fill" horizontalArrangement="spaceEvenly">
-          <Text>Row 0 / Column 0</Text>
-          <Text>Row 0 / Column 1</Text>
-        </Row>
-        <Row width="fill" horizontalArrangement="spaceBetween">
-          <Text>Row 1 / Column 0</Text>
-          <Text>Row 1 / Column 1</Text>
-        </Row>
-        <Button phx-click="inc">
-          <Text>Button</Text>
-        </Button>
       </Column>
     </Scaffold>
     """
@@ -113,6 +81,10 @@ defmodule ScratchboardWeb.HelloLive do
           <li>
             <a href="/counter">Counter Demo</a>
           </li>
+
+          <button phx-click="dec">-</button>
+          This counter: <%= @val %>
+          <button phx-click="inc">+</button>
         </ul>
       </div>
     </div>

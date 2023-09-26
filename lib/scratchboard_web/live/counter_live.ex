@@ -9,12 +9,44 @@ defmodule ScratchboardWeb.CounterLive do
     ~JETPACK"""
     <Scaffold>
       <TopAppBar>
-        <Title>Counter Sample</Title>
+        <Title>
+          <Text>App title</Text>
+        </Title>
+        <Action phx-click="decrement-count">
+          <Icon imageVector="filled:Add" />
+        </Action>
+        <NavIcon phx-click="reset-count">
+          <Icon imageVector="filled:Menu" />
+        </NavIcon>
       </TopAppBar>
-      <Column size="fill" verticalArrangement="center" horizontalAlignment="center">
-        <Text>This button has been pressed times.</Text>
+      <Column scroll="vertical">
+        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg"/>
+        <Text>Counter: <%= @count %> </Text>
+        <Row scroll="horizontal">
+          <Card shape="8" padding="8">
+            <Row padding="32">
+              <Text>Card Content 1</Text>
+              <Text>Card Content 2</Text>
+            </Row>
+          </Card>
+          <Card shape="8" padding="8">
+            <Row padding="32">
+              <Text>Card Content 1</Text>
+              <Text>Card Content 2</Text>
+            </Row>
+          </Card>
+        </Row>
+        <Spacer height="30" />
+        <Row width="fill" horizontalArrangement="spaceEvenly">
+          <Text>Row 0 / Column 0</Text>
+          <Text>Row 0 / Column 1</Text>
+        </Row>
+        <Row width="fill" horizontalArrangement="spaceBetween">
+          <Text>Row 1 / Column 0</Text>
+          <Text>Row 1 / Column 1</Text>
+        </Row>
         <Button phx-click="increment-count">
-          <Text>Press me</Text>
+          <Text>Button</Text>
         </Button>
       </Column>
     </Scaffold>
@@ -55,9 +87,18 @@ defmodule ScratchboardWeb.CounterLive do
   end
 
   @impl true
-  def mount(_params, _session, socket) do
-    Counter.join(self())
+  def mount(params, _session, socket) do
+    initial_value = Map.get(params, "val", Counter.get_count())
+    x = cond do
+      is_integer(initial_value) ->
+        initial_value
 
+      is_binary(initial_value) ->
+        {val, _} = Integer.parse(initial_value)
+        val
+    end
+    Counter.join(self())
+    Scratchboard.Counter.set_initial(x)
     {:ok, assign(socket, :count, Counter.get_count())}
   end
 
@@ -70,6 +111,16 @@ defmodule ScratchboardWeb.CounterLive do
   def handle_event("increment-count", _params, socket) do
     Scratchboard.Counter.increment_count()
 
+    {:noreply, socket}
+  end
+
+  def handle_event("decrement-count", _, socket) do
+    Scratchboard.Counter.decrement_count()
+    {:noreply, socket}
+  end
+
+  def handle_event("reset-count", _, socket) do
+    Scratchboard.Counter.reset_count()
     {:noreply, socket}
   end
 end
