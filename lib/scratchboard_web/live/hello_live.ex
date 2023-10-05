@@ -18,6 +18,10 @@ defmodule ScratchboardWeb.HelloLive do
     {:noreply, push_navigate(socket, to: "/counter?val=#{socket.assigns.val}")}
   end
 
+  def handle_event("redirect", _params, socket) do
+    {:noreply, redirect(socket, to: "/counter")}
+  end
+
   @impl true
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
@@ -27,7 +31,8 @@ defmodule ScratchboardWeb.HelloLive do
       </TopAppBar>
       <Column size="fill" verticalArrangement="center" horizontalAlignment="center">
         <Text>Hello Jetpack!</Text>
-        <Button phx-click="navigate"><Text>Go to counter</Text></Button>
+        <Button phx-click="navigate"><Text>Navigate to counter</Text></Button>
+        <Button phx-click="redirect"><Text>Redirect to counter</Text></Button>
         <Row verticalAlignment="center">
           <Button phx-click="dec" padding="8"><Text>-</Text></Button>
           <Text>This counter: <%= @val %></Text>
