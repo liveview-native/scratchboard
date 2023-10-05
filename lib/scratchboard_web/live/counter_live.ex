@@ -20,7 +20,8 @@ defmodule ScratchboardWeb.CounterLive do
         </NavIcon>
       </TopAppBar>
       <Column scroll="vertical">
-        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg"/>
+        <Text>Here</Text>
+        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5"/>
         <Text>Counter: <%= @count %> </Text>
         <Row scroll="horizontal">
           <Card shape="8" padding="8">

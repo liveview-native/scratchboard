@@ -27,16 +27,45 @@ defmodule ScratchboardWeb.HelloLive do
     ~JETPACK"""
     <Scaffold>
       <TopAppBar>
-        <Title>Hello</Title>
+        <Title><Text>Hello</Text></Title>
       </TopAppBar>
-      <Column size="fill" verticalArrangement="center" horizontalAlignment="center">
-        <Text>Hello Jetpack!</Text>
-        <Button phx-click="navigate"><Text>Navigate to counter</Text></Button>
+      <Column width="fill" verticalArrangement="center" horizontalAlignment="center">
+        <Text style="headlineLarge">Title</Text>
+        <Card
+          shape="8"
+          padding="16"
+          width="140"
+          height="120"
+          elevation="{'defaultElevation': '10', 'pressedElevation': '2'}"
+          phx-click="dec"
+        >
+          <Text padding="16">Hello Jetpack!</Text>
+        </Card>
+        <Spacer height="8" />
+        <Card padding="16">
+          <Text padding="16">Simple card</Text>
+        </Card>
+        <Button
+          phx-click="navigate"
+          contentPadding="50"
+          elevation="{'defaultElevation': '20', 'pressedElevation': '10'}"
+        >
+          <Text>Navigate to counter</Text>
+        </Button>
         <Button phx-click="redirect"><Text>Redirect to counter</Text></Button>
+        <IconButton phx-click="inc" colors="{'containerColor': '#FFFF0000', 'contentColor': '#FFFFFFFF'}">
+          <Icon imageVector="filled:Add" />
+        </IconButton>
         <Row verticalAlignment="center">
-          <Button phx-click="dec" padding="8"><Text>-</Text></Button>
+          <Button
+            phx-click="dec"
+            shape="circle"
+            size="60"
+          >
+            <Text>-</Text>
+          </Button>
           <Text>This counter: <%= @val %></Text>
-          <Button phx-click="inc" padding="8"><Text>+</Text></Button>
+          <Button phx-click="inc" shape="circle" size="60"><Text>+</Text></Button>
         </Row>
       </Column>
     </Scaffold>
