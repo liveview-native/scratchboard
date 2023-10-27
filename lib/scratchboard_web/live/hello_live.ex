@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :val, 0)}
+    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") }
   end
 
   def handle_event("inc", _, socket) do
@@ -12,6 +12,10 @@ defmodule ScratchboardWeb.HelloLive do
 
   def handle_event("dec", _, socket) do
     {:noreply, update(socket, :val, &(&1 - 1))}
+  end
+
+  def handle_event("setName", name, socket) do
+    {:noreply, assign(socket, :userText, name)}
   end
 
   def handle_event("navigate", _params, socket) do
@@ -23,14 +27,73 @@ defmodule ScratchboardWeb.HelloLive do
   end
 
   @impl true
+  @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
     <Scaffold>
       <TopAppBar>
         <Title><Text>Hello</Text></Title>
       </TopAppBar>
-      <Column width="fill" verticalArrangement="center" horizontalAlignment="center">
-        <Text style="headlineLarge">Title</Text>
+      <FloatingActionButton phx-click="inc">
+        <Icon imageVector="filled:Add" />
+      </FloatingActionButton>
+      <Column width="fill" verticalArrangement="center" horizontalAlignment="center" scroll="vertical">
+        <Image resource="android_icon" height="96" background="#FFFF00FF" width="fill" alignment="centerEnd"/>
+        <Text><%= @userText %></Text>
+        <TextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" imeAction="search" capitalization="words" phx-click="inc">
+          <Label><Text>Label</Text></Label>
+          <Placeholder><Text>Placeholder</Text></Placeholder>
+          <TrailingIcon imageVector="filled:Add"/>
+          <LeadingIcon imageVector="filled:Send"/>
+          <Prefix><Text>Pre</Text></Prefix>
+          <Suffix><Text>Suf</Text></Suffix>
+          <SupportingText>Supporting text</SupportingText>
+        </TextField>
+        <Row width="fill" height="wrap" background="#FFCCCCCC">
+          <Box weight="0.25" background="#FFFF0000" height="50">
+            <Text align="center">25%</Text>
+          </Box>
+          <Box weight="0.35" background="#FF00FF00" height="50">
+            <Text align="center">35%</Text>
+          </Box>
+          <Box weight="0.40" background="#FF0000FF" height="50">
+            <Text align="center">40%</Text>
+          </Box>
+        </Row>
+        <Row height="100" width="fill" background="#FFCCCCCC" horizontalArrangement="spaceAround">
+          <Box background="#FFFF0000" size="70" align="top">
+            <Text align="center">Top</Text>
+          </Box>
+          <Box background="#FF00FF00" size="70" align="center">
+            <Text align="center">Center</Text>
+          </Box>
+          <Box background="#FF0000FF" size="70" align="bottom">
+            <Text align="center">Bottom</Text>
+          </Box>
+        </Row>
+        <Column height="200" width="200" background="#FFCCCCCC">
+          <Box background="#FFFF0000" size="70" align="top">
+            <Text align="start">Start</Text>
+          </Box>
+          <Box background="#FF00FF00" size="70" align="center">
+            <Text align="center">Center</Text>
+          </Box>
+          <Box background="#FF0000FF" size="70" align="end">
+            <Text align="center">End</Text>
+          </Box>
+        </Column>
+        <Column height="200" width="200" background="#FFCCCCCC">
+          <Box background="#FFFF0000" width="fill" weight="25">
+            <Text align="start">25%</Text>
+          </Box>
+          <Box background="#FF00FF00" width="fill" weight="35">
+            <Text align="center">35%</Text>
+          </Box>
+          <Box background="#FF0000FF" width="fill" weight="40">
+            <Text align="end">40%</Text>
+          </Box>
+        </Column>
+        <Text style="headlineLarge" text="Title"/>
         <Card
           shape="8"
           padding="16"
@@ -67,6 +130,11 @@ defmodule ScratchboardWeb.HelloLive do
           <Text>This counter: <%= @val %></Text>
           <Button phx-click="inc" shape="circle" size="60"><Text>+</Text></Button>
         </Row>
+        <Box size="100" background="#FFFF0000">
+          <Icon imageVector="filled:Add" align="topStart"/>
+          <Text align="center">Text</Text>
+          <Icon imageVector="filled:Share" align="bottomEnd"/>
+        </Box>
       </Column>
     </Scaffold>
     """
