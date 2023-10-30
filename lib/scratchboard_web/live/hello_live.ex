@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") }
+    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 0) }
   end
 
   def handle_event("inc", _, socket) do
@@ -16,6 +16,10 @@ defmodule ScratchboardWeb.HelloLive do
 
   def handle_event("setName", name, socket) do
     {:noreply, assign(socket, :userText, name)}
+  end
+
+  def handle_event("setSliderValue", value, socket) do
+    {:noreply, assign(socket, :sliderValue, value)}
   end
 
   def handle_event("navigate", _params, socket) do
@@ -49,6 +53,10 @@ defmodule ScratchboardWeb.HelloLive do
           <Suffix><Text>Suf</Text></Suffix>
           <SupportingText>Supporting text</SupportingText>
         </TextField>
+        <Column>
+          <Text>Value: <%= @sliderValue %></Text>
+          <Slider value={"#{@sliderValue}"} phx-change="setSliderValue" minValue="0" maxValue="100" steps="5" phx-debounce="2000"/>
+        </Column>
         <Row width="fill" height="wrap" background="#FFCCCCCC">
           <Box weight="0.25" background="#FFFF0000" height="50">
             <Text align="center">25%</Text>
