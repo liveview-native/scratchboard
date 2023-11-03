@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 0) }
+    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 0) |> assign(:isChecked, true) |> assign(:radioOption, "A") }
   end
 
   def handle_event("inc", _, socket) do
@@ -20,6 +20,14 @@ defmodule ScratchboardWeb.HelloLive do
 
   def handle_event("setSliderValue", value, socket) do
     {:noreply, assign(socket, :sliderValue, value)}
+  end
+
+  def handle_event("toggleCheck", value, socket) do
+    {:noreply, assign(socket, :isChecked, value)}
+  end
+
+  def handle_event("setRadioOption", value, socket) do
+    {:noreply, assign(socket, :radioOption, value)}
   end
 
   def handle_event("navigate", _params, socket) do
@@ -41,14 +49,31 @@ defmodule ScratchboardWeb.HelloLive do
       <FloatingActionButton phx-click="inc">
         <Icon imageVector="filled:Add" />
       </FloatingActionButton>
-      <Column width="fill" verticalArrangement="center" horizontalAlignment="center" scroll="vertical">
+      <LazyColumn width="fill" verticalArrangement="center" horizontalAlignment="center" scroll="vertical">
+        <CircularProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" />
+        <LinearProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" padding="16" width="fill" />
+        <Divider thickness="2" verticalPadding="8" color="#FFCCCCCC" />
+        <Row verticalAlignment="center">
+          <RadioButton value="A" phx-change="setRadioOption" selected={"#{@radioOption == "A"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}" />
+          <Text>A</Text>
+          <RadioButton value="B" phx-change="setRadioOption" selected={"#{@radioOption == "B"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}" />
+          <Text>B</Text>
+          <RadioButton value="C" phx-change="setRadioOption" selected={"#{@radioOption == "C"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}"/>
+          <Text>C</Text>
+        </Row>
+        <Divider thickness="1" verticalPadding="8" color/>
+        <Row verticalAlignment="center">
+          <CheckBox checked={"#{@isChecked}"} phx-change="toggleCheck" />
+          <Switch checked={"#{@isChecked}"} phx-change="toggleCheck" />
+          <Text>Checkbox value: <%= @isChecked %></Text>
+        </Row>
         <Image resource="android_icon" height="96" background="#FFFF00FF" width="fill" alignment="centerEnd"/>
         <Text><%= @userText %></Text>
         <TextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" imeAction="search" capitalization="words" phx-click="inc">
           <Label><Text>Label</Text></Label>
           <Placeholder><Text>Placeholder</Text></Placeholder>
-          <TrailingIcon imageVector="filled:Add"/>
-          <LeadingIcon imageVector="filled:Send"/>
+          <TrailingIcon imageVector="filled:Add" tint="#FFFF0000"/>
+          <LeadingIcon imageVector="filled:ChevronLeft"/>
           <Prefix><Text>Pre</Text></Prefix>
           <Suffix><Text>Suf</Text></Suffix>
           <SupportingText>Supporting text</SupportingText>
@@ -58,8 +83,8 @@ defmodule ScratchboardWeb.HelloLive do
           <Slider value={"#{@sliderValue}"} phx-change="setSliderValue" minValue="0" maxValue="100" steps="5" phx-debounce="2000"/>
         </Column>
         <Row width="fill" height="wrap" background="#FFCCCCCC">
-          <Box weight="0.25" background="#FFFF0000" height="50">
-            <Text align="center">25%</Text>
+          <Box weight="0.25" background="#FFFF0000" height="50" contentAlignment="bottomEnd">
+            <Text>25%</Text>
           </Box>
           <Box weight="0.35" background="#FF00FF00" height="50">
             <Text align="center">35%</Text>
@@ -117,6 +142,7 @@ defmodule ScratchboardWeb.HelloLive do
           <Text padding="16">Simple card</Text>
         </Card>
         <Button
+          padding="16"
           phx-click="navigate"
           contentPadding="50"
           elevation="{'defaultElevation': '20', 'pressedElevation': '10'}"
@@ -143,7 +169,7 @@ defmodule ScratchboardWeb.HelloLive do
           <Text align="center">Text</Text>
           <Icon imageVector="filled:Share" align="bottomEnd"/>
         </Box>
-      </Column>
+      </LazyColumn>
     </Scaffold>
     """
   end
