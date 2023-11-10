@@ -8,18 +8,16 @@ defmodule ScratchboardWeb.CounterLive do
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
     <Scaffold>
-      <TopAppBar>
-        <Title>
-          <Text>App title</Text>
-        </Title>
-        <Action phx-click="decrement-count">
+      <TopAppBar template="topBar">
+        <Text template="title">App title</Text>
+        <IconButton template="action" phx-click="decrement-count">
           <Icon imageVector="filled:Add" />
-        </Action>
-        <NavIcon phx-click="reset-count">
+        </IconButton>
+        <IconButton template="navIcon" phx-click="reset-count">
           <Icon imageVector="filled:Menu" />
-        </NavIcon>
+        </IconButton>
       </TopAppBar>
-      <Column scroll="vertical">
+      <Column template="body" scroll="vertical">
         <Text>Here</Text>
         <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" shape="circle" contentScale="fillHeight"/>
         <Text>Counter: <%= @count %> </Text>

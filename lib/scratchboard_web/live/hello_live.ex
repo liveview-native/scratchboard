@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 0) |> assign(:isChecked, true) |> assign(:radioOption, "A") }
+    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 0) |> assign(:isChecked, true) |> assign(:radioOption, "A") |> assign(:ddOption, "A") |> assign(:showDialog, false) |> assign(:showSnack, false)}
   end
 
   def handle_event("inc", _, socket) do
@@ -30,6 +30,26 @@ defmodule ScratchboardWeb.HelloLive do
     {:noreply, assign(socket, :radioOption, value)}
   end
 
+  def handle_event("setDDOption", value, socket) do
+    {:noreply, assign(socket, :ddOption, value)}
+  end
+
+  def handle_event("showDialog", _params, socket) do
+    {:noreply, assign(socket, :showDialog, true)}
+  end
+
+  def handle_event("hideDialog", _params, socket) do
+    {:noreply, assign(socket, :showDialog, false)}
+  end
+
+  def handle_event("showSnackbar", _params, socket) do
+    {:noreply, assign(socket, :showSnack, true)}
+  end
+
+  def handle_event("hideSnackbar", _params, socket) do
+    {:noreply, assign(socket, :showSnack, false)}
+  end
+
   def handle_event("navigate", _params, socket) do
     {:noreply, push_navigate(socket, to: "/counter?val=#{socket.assigns.val}")}
   end
@@ -43,13 +63,38 @@ defmodule ScratchboardWeb.HelloLive do
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
     <Scaffold>
-      <TopAppBar>
-        <Title><Text>Hello</Text></Title>
+      <TopAppBar template="topBar">
+        <Text template="title">Hello</Text>
       </TopAppBar>
-      <FloatingActionButton phx-click="inc">
+      <FloatingActionButton phx-click="inc" template="fab">
         <Icon imageVector="filled:Add" />
       </FloatingActionButton>
-      <LazyColumn width="fill" verticalArrangement="center" horizontalAlignment="center" scroll="vertical">
+      <Column template="body" width="fill" verticalArrangement="center" horizontalAlignment="center" scroll="vertical">
+        <OutlinedButton phx-click="showDialog"><Text>Show Dialog</Text></OutlinedButton>
+        <Box size="100" contentAlignment="center">
+          <BadgeBox containerColor="#FF0000FF" contentColor="#FFFF0000">
+            <Badge><Text>+99</Text></Badge>
+            <Icon imageVector="filled:Add" />
+          </BadgeBox>
+        </Box>
+        <ElevatedButton phx-click="showSnackbar"><Text>Show Snackbar</Text></ElevatedButton>
+        <FilledTonalButton phx-click="showDialog"><Text>FilledTonalButton</Text></FilledTonalButton>
+        <TextButton phx-click="showDialog"><Text>TextButton</Text></TextButton>
+        <Text>Combobox option <%= @ddOption %></Text>
+        <ExposedDropDownMenuBox horizontalPadding="16">
+          <TextField text={"#{@ddOption}"} width="fill" readOnly="true" menuAnchor/>
+          <DropDownMenuItem phx-click="setDDOption" value="A">
+            <Text>Option A</Text>
+            <Icon imageVector="filled:Add" template="trailingIcon" />
+            <Icon imageVector="filled:ChevronLeft" template="leadingIcon"/>
+          </DropDownMenuItem>
+          <DropDownMenuItem phx-click="setDDOption" value="B" enabled="false">
+            <Text>Option B</Text>
+          </DropDownMenuItem>
+          <DropDownMenuItem phx-click="setDDOption" value="C">
+            <Text>Option C</Text>
+          </DropDownMenuItem>
+        </ExposedDropDownMenuBox>
         <CircularProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" />
         <LinearProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" padding="16" width="fill" />
         <Divider thickness="2" verticalPadding="8" color="#FFCCCCCC" />
@@ -61,7 +106,7 @@ defmodule ScratchboardWeb.HelloLive do
           <RadioButton value="C" phx-change="setRadioOption" selected={"#{@radioOption == "C"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}"/>
           <Text>C</Text>
         </Row>
-        <Divider thickness="1" verticalPadding="8" color/>
+        <Divider thickness="1" verticalPadding="8" />
         <Row verticalAlignment="center">
           <CheckBox checked={"#{@isChecked}"} phx-change="toggleCheck" />
           <Switch checked={"#{@isChecked}"} phx-change="toggleCheck" />
@@ -70,13 +115,13 @@ defmodule ScratchboardWeb.HelloLive do
         <Image resource="android_icon" height="96" background="#FFFF00FF" width="fill" alignment="centerEnd"/>
         <Text><%= @userText %></Text>
         <TextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" imeAction="search" capitalization="words" phx-click="inc">
-          <Label><Text>Label</Text></Label>
-          <Placeholder><Text>Placeholder</Text></Placeholder>
-          <TrailingIcon imageVector="filled:Add" tint="#FFFF0000"/>
-          <LeadingIcon imageVector="filled:ChevronLeft"/>
-          <Prefix><Text>Pre</Text></Prefix>
-          <Suffix><Text>Suf</Text></Suffix>
-          <SupportingText>Supporting text</SupportingText>
+          <Text template="label">Label</Text>
+          <Text template="placeholder">Placeholder</Text>
+          <Icon template="leadingIcon" imageVector="filled:Add" tint="#FFFF0000"/>
+          <Icon template="trailingIcon" imageVector="filled:ChevronLeft"/>
+          <Text template="prefix">Pre</Text>
+          <Text template="suffix">Suf</Text>
+          <Text template="supportingText">Supporting text</Text>
         </TextField>
         <Column>
           <Text>Value: <%= @sliderValue %></Text>
@@ -169,7 +214,23 @@ defmodule ScratchboardWeb.HelloLive do
           <Text align="center">Text</Text>
           <Icon imageVector="filled:Share" align="bottomEnd"/>
         </Box>
-      </LazyColumn>
+        <%= if @showDialog do %>
+        <AlertDialog phx-click="hideDialog">
+          <TextButton phx-click="hideDialog" template="confirm">
+            <Text>Confirm</Text>
+          </TextButton>
+          <OutlinedButton phx-click="hideDialog" template="dismiss">
+            <Text>Dismiss</Text>
+          </OutlinedButton>
+          <Icon imageVector="filled:Add" template="icon"/>
+          <Text template="title">Alert Title</Text>
+          <Text>Alert message</Text>
+        </AlertDialog>
+        <% end %>
+      </Column>
+      <%= if @showSnack do %>
+      <Snackbar message="Hi there!" dismissEvent="hideSnackbar" />
+      <% end %>
     </Scaffold>
     """
   end
