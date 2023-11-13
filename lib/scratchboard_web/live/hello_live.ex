@@ -70,6 +70,10 @@ defmodule ScratchboardWeb.HelloLive do
         <Icon imageVector="filled:Add" />
       </FloatingActionButton>
       <Column template="body" width="fill" verticalArrangement="center" horizontalAlignment="center" scroll="vertical">
+        <Row padding="16">
+          <ElevatedCard weight="1" padding="4"><Text padding="16">Elevated Card</Text></ElevatedCard>
+          <OutlinedCard weight="1" padding="4"><Text padding="16">Outlined Card</Text></OutlinedCard>
+        </Row>
         <OutlinedButton phx-click="showDialog"><Text>Show Dialog</Text></OutlinedButton>
         <Box size="100" contentAlignment="center">
           <BadgeBox containerColor="#FF0000FF" contentColor="#FFFF0000">
