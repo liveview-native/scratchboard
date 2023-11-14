@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 0) |> assign(:isChecked, true) |> assign(:radioOption, "A") |> assign(:ddOption, "A") |> assign(:showDialog, false) |> assign(:showSnack, false)}
+    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 10) |> assign(:sliderRange, [90, 10]) |> assign(:isChecked, true) |> assign(:radioOption, "A") |> assign(:ddOption, "A") |> assign(:showDialog, false) |> assign(:showSnack, false)}
   end
 
   def handle_event("inc", _, socket) do
@@ -20,6 +20,10 @@ defmodule ScratchboardWeb.HelloLive do
 
   def handle_event("setSliderValue", value, socket) do
     {:noreply, assign(socket, :sliderValue, value)}
+  end
+
+  def handle_event("setSliderRange", value, socket) do
+    {:noreply, assign(socket, :sliderRange, value)}
   end
 
   def handle_event("toggleCheck", value, socket) do
@@ -129,7 +133,13 @@ defmodule ScratchboardWeb.HelloLive do
         </TextField>
         <Column>
           <Text>Value: <%= @sliderValue %></Text>
-          <Slider value={"#{@sliderValue}"} phx-change="setSliderValue" minValue="0" maxValue="100" steps="5" phx-debounce="2000"/>
+          <Slider value={"#{@sliderValue}"} phx-change="setSliderValue" minValue="0" maxValue="100" steps="5" phx-debounce="2000">
+            <Box size="40" clip="4" background="#FFFF00FF" template="thumb"/>
+            <Box width="fill" height="10" background="#FF0000FF" template="track"/>
+          </Slider>
+
+          <Text>Range: Start = <%= Enum.at(@sliderRange,0) %> | End <%= Enum.at(@sliderRange,1) %></Text>
+          <RangeSlider value={"#{Enum.join(@sliderRange, ",")}"} phx-change="setSliderRange" minValue="0" maxValue="100" phx-debounce="300" />
         </Column>
         <Row width="fill" height="wrap" background="#FFCCCCCC">
           <Box weight="0.25" background="#FFFF0000" height="50" contentAlignment="bottomEnd">
