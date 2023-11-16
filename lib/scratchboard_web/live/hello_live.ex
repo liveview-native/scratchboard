@@ -80,29 +80,29 @@ defmodule ScratchboardWeb.HelloLive do
         </Row>
         <OutlinedButton phx-click="showDialog"><Text>Show Dialog</Text></OutlinedButton>
         <Box size="100" contentAlignment="center">
-          <BadgeBox containerColor="#FF0000FF" contentColor="#FFFF0000">
-            <Badge><Text>+99</Text></Badge>
+          <BadgedBox containerColor="#FF0000FF" contentColor="#FFFF0000">
+            <Text template="badge">+99</Text>
             <Icon imageVector="filled:Add" />
-          </BadgeBox>
+          </BadgedBox>
         </Box>
         <ElevatedButton phx-click="showSnackbar"><Text>Show Snackbar</Text></ElevatedButton>
         <FilledTonalButton phx-click="showDialog"><Text>FilledTonalButton</Text></FilledTonalButton>
         <TextButton phx-click="showDialog"><Text>TextButton</Text></TextButton>
         <Text>Combobox option <%= @ddOption %></Text>
-        <ExposedDropDownMenuBox horizontalPadding="16">
+        <ExposedDropdownMenuBox horizontalPadding="16">
           <TextField text={"#{@ddOption}"} width="fill" readOnly="true" menuAnchor/>
-          <DropDownMenuItem phx-click="setDDOption" value="A">
+          <DropdownMenuItem phx-click="setDDOption" value="A">
             <Text>Option A</Text>
             <Icon imageVector="filled:Add" template="trailingIcon" />
             <Icon imageVector="filled:ChevronLeft" template="leadingIcon"/>
-          </DropDownMenuItem>
-          <DropDownMenuItem phx-click="setDDOption" value="B" enabled="false">
+          </DropdownMenuItem>
+          <DropdownMenuItem phx-click="setDDOption" value="B" enabled="false">
             <Text>Option B</Text>
-          </DropDownMenuItem>
-          <DropDownMenuItem phx-click="setDDOption" value="C">
+          </DropdownMenuItem>
+          <DropdownMenuItem phx-click="setDDOption" value="C">
             <Text>Option C</Text>
-          </DropDownMenuItem>
-        </ExposedDropDownMenuBox>
+          </DropdownMenuItem>
+        </ExposedDropdownMenuBox>
         <CircularProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" />
         <LinearProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" padding="16" width="fill" />
         <Divider thickness="2" verticalPadding="8" color="#FFCCCCCC" />
@@ -133,13 +133,13 @@ defmodule ScratchboardWeb.HelloLive do
         </TextField>
         <Column>
           <Text>Value: <%= @sliderValue %></Text>
-          <Slider value={"#{@sliderValue}"} phx-change="setSliderValue" minValue="0" maxValue="100" steps="5" phx-debounce="2000">
+          <Slider value={@sliderValue} phx-change="setSliderValue" minValue="0" maxValue="100" steps="5" phx-debounce="2000">
             <Box size="40" clip="4" background="#FFFF00FF" template="thumb"/>
             <Box width="fill" height="10" background="#FF0000FF" template="track"/>
           </Slider>
 
           <Text>Range: Start = <%= Enum.at(@sliderRange,0) %> | End <%= Enum.at(@sliderRange,1) %></Text>
-          <RangeSlider value={"#{Enum.join(@sliderRange, ",")}"} phx-change="setSliderRange" minValue="0" maxValue="100" phx-debounce="300" />
+          <RangeSlider value={Enum.join(@sliderRange, ",")} phx-change="setSliderRange" minValue="0" maxValue="100" phx-debounce="300" />
         </Column>
         <Row width="fill" height="wrap" background="#FFCCCCCC">
           <Box weight="0.25" background="#FFFF0000" height="50" contentAlignment="bottomEnd">
