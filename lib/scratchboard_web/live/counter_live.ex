@@ -11,24 +11,24 @@ defmodule ScratchboardWeb.CounterLive do
       <TopAppBar template="topBar">
         <Text template="title">App title</Text>
         <IconButton template="action" phx-click="decrement-count">
-          <Icon imageVector="filled:Add" />
+          <Icon image-vector="filled:Add" />
         </IconButton>
-        <IconButton template="navIcon" phx-click="reset-count">
-          <Icon imageVector="filled:Menu" />
+        <IconButton template="navigationIcon" phx-click="reset-counter">
+          <Icon image-vector="filled:Menu" />
         </IconButton>
       </TopAppBar>
       <Column template="body" scroll="vertical">
         <Text>Here</Text>
-        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" shape="circle" contentScale="fillHeight"/>
+        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" shape="circle" content-scale="fillHeight"/>
         <Text>Counter: <%= @count %> </Text>
         <Row scroll="horizontal">
-          <Card shape="8" padding="8">
+          <Card shape="8" padding="8" elevation="{'defaultElevation': '10'}">
             <Row padding="32">
               <Text>Card Content 1</Text>
               <Text>Card Content 2</Text>
             </Row>
           </Card>
-          <Card shape="8" padding="8">
+          <Card shape="8" padding="8" elevation="{'defaultElevation': '10'}">
             <Row padding="32">
               <Text>Card Content 1</Text>
               <Text>Card Content 2</Text>
@@ -36,11 +36,11 @@ defmodule ScratchboardWeb.CounterLive do
           </Card>
         </Row>
         <Spacer height="30" />
-        <Row width="fill" horizontalArrangement="spaceEvenly">
+        <Row width="fill" horizontal-arrangement="spaceEvenly">
           <Text>Row 0 / Column 0</Text>
           <Text>Row 0 / Column 1</Text>
         </Row>
-        <Row width="fill" horizontalArrangement="spaceBetween">
+        <Row width="fill" horizontal-arrangement="spaceBetween">
           <Text>Row 1 / Column 0</Text>
           <Text>Row 1 / Column 1</Text>
         </Row>

@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 10) |> assign(:sliderRange, [90, 10]) |> assign(:isChecked, true) |> assign(:radioOption, "A") |> assign(:ddOption, "A") |> assign(:showDialog, false) |> assign(:showSnack, false)}
+    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 10) |> assign(:sliderRange, [10, 90]) |> assign(:isChecked, true) |> assign(:radioOption, "A") |> assign(:ddOption, "A") |> assign(:showDialog, false) |> assign(:showSnack, false) |> assign(:drawerIsOpen, false)}
   end
 
   def handle_event("inc", _, socket) do
@@ -62,87 +62,121 @@ defmodule ScratchboardWeb.HelloLive do
     {:noreply, redirect(socket, to: "/counter")}
   end
 
+  def handle_event("closeDrawer", _, socket) do
+    {:noreply, assign(socket, :drawerIsOpen, false)}
+  end
+
+  def handle_event("openDrawer", _, socket) do
+    {:noreply, assign(socket, :drawerIsOpen, true)}
+  end
+
   @impl true
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
+    <ModalNavigationDrawer is-open={"#{@drawerIsOpen}"} on-close="closeDrawer" on-open="openDrawer" gestures-enabled="true" scrim-color="#FF000000">
+      <ModalDrawerSheet template="drawerContent" container-color="#FFFFFF00" content-color="#FFCCCCCC" shape="24" >
+        <NavigationDrawerItem selected="true" phx-click="closeDrawer" colors="{'selectedContainerColor': '#FF00FF00'}">
+          <Icon image-vector="filled:Favorite" template="icon" />
+          <Text template="label">Favorites</Text>
+          <Text template="badge">99+</Text>
+        </NavigationDrawerItem>
+        <NavigationDrawerItem selected="false" phx-click="navigate">
+          <Icon image-vector="filled:AccountBox" template="icon" />
+          <Text template="label">Counter</Text>
+          <Box template="badge" clip="circle" background="#FFFF0000" content-alignment="center" size="28">
+            <Text font-size="10" color="#FFFFFFFF">99+</Text>
+          </Box>
+        </NavigationDrawerItem>
+      </ModalDrawerSheet>
     <Scaffold>
       <TopAppBar template="topBar">
         <Text template="title">Hello</Text>
+        <IconButton template="navigationIcon" phx-click="openDrawer">
+          <Icon image-vector="filled:Menu" />
+        </IconButton>
       </TopAppBar>
       <FloatingActionButton phx-click="inc" template="fab">
-        <Icon imageVector="filled:Add" />
+        <Icon image-vector="filled:Add" />
       </FloatingActionButton>
-      <Column template="body" width="fill" verticalArrangement="center" horizontalAlignment="center" scroll="vertical">
+      <Column template="body" width="fill" vertical-arrangement="center" horizontal-alignment="center" scroll="vertical">
         <Row padding="16">
           <ElevatedCard weight="1" padding="4"><Text padding="16">Elevated Card</Text></ElevatedCard>
           <OutlinedCard weight="1" padding="4"><Text padding="16">Outlined Card</Text></OutlinedCard>
         </Row>
         <OutlinedButton phx-click="showDialog"><Text>Show Dialog</Text></OutlinedButton>
-        <Box size="100" contentAlignment="center">
-          <BadgedBox containerColor="#FF0000FF" contentColor="#FFFF0000">
+        <Box size="100" content-alignment="center">
+          <BadgedBox container-color="#FF0000FF" content-color="#FFFF0000">
             <Text template="badge">+99</Text>
-            <Icon imageVector="filled:Add" />
+            <Icon image-vector="filled:Add" />
           </BadgedBox>
         </Box>
         <ElevatedButton phx-click="showSnackbar"><Text>Show Snackbar</Text></ElevatedButton>
         <FilledTonalButton phx-click="showDialog"><Text>FilledTonalButton</Text></FilledTonalButton>
         <TextButton phx-click="showDialog"><Text>TextButton</Text></TextButton>
         <Text>Combobox option <%= @ddOption %></Text>
-        <ExposedDropdownMenuBox horizontalPadding="16">
-          <TextField text={"#{@ddOption}"} width="fill" readOnly="true" menuAnchor/>
-          <DropdownMenuItem phx-click="setDDOption" value="A">
+        <ExposedDropdownMenuBox horizontal-padding="16">
+          <TextField text={"#{@ddOption}"} width="fill" read-only="true" menu-anchor/>
+          <DropdownMenuItem phx-click="setDDOption" phx-value="A" colors="{'textColor': '#FFFF0000', 'leadingIconColor': '#FF00FF00', 'trailingIconColor': '#FFFFFF00'}" enabled="false">
             <Text>Option A</Text>
-            <Icon imageVector="filled:Add" template="trailingIcon" />
-            <Icon imageVector="filled:ChevronLeft" template="leadingIcon"/>
+            <Icon image-vector="filled:Add" template="trailingIcon" />
+            <Icon image-vector="filled:ChevronLeft" template="leadingIcon"/>
           </DropdownMenuItem>
-          <DropdownMenuItem phx-click="setDDOption" value="B" enabled="false">
+          <DropdownMenuItem phx-click="setDDOption" phx-value="B">
             <Text>Option B</Text>
           </DropdownMenuItem>
-          <DropdownMenuItem phx-click="setDDOption" value="C">
+          <DropdownMenuItem phx-click="setDDOption" phx-value="C">
             <Text>Option C</Text>
           </DropdownMenuItem>
         </ExposedDropdownMenuBox>
-        <CircularProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" />
-        <LinearProgressIndicator color="#FFFF0000" trackColor="#FF00FF00" strokeCap="butt" padding="16" width="fill" />
-        <Divider thickness="2" verticalPadding="8" color="#FFCCCCCC" />
-        <Row verticalAlignment="center">
-          <RadioButton value="A" phx-change="setRadioOption" selected={"#{@radioOption == "A"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}" />
+        <CircularProgressIndicator color="#FFFF0000" track-color="#FF00FF00" stroke-cap="butt" />
+        <LinearProgressIndicator color="#FFFF0000" track-color="#FF00FF00" stroke-cap="butt" padding="16" width="fill" />
+        <Divider thickness="2" vertical-padding="8" color="#FFCCCCCC" />
+        <Row vertical-alignment="center">
+          <RadioButton phx-value="A" phx-change="setRadioOption" selected={"#{@radioOption == "A"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}" />
           <Text>A</Text>
-          <RadioButton value="B" phx-change="setRadioOption" selected={"#{@radioOption == "B"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}" />
+          <RadioButton phx-value="B" phx-change="setRadioOption" selected={"#{@radioOption == "B"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}" />
           <Text>B</Text>
-          <RadioButton value="C" phx-change="setRadioOption" selected={"#{@radioOption == "C"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}"/>
+          <RadioButton phx-value="C" phx-change="setRadioOption" selected={"#{@radioOption == "C"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}"/>
           <Text>C</Text>
         </Row>
-        <Divider thickness="1" verticalPadding="8" />
-        <Row verticalAlignment="center">
-          <CheckBox checked={"#{@isChecked}"} phx-change="toggleCheck" />
-          <Switch checked={"#{@isChecked}"} phx-change="toggleCheck" />
+        <Divider thickness="1" vertical-padding="8" />
+        <Row vertical-alignment="center">
+          <CheckBox checked={"#{@isChecked}"} phx-change="toggleCheck" colors="{'checkedColor': '#FFFF0000', 'uncheckedColor': '#FF00FF00', 'checkmarkColor': '#FFFFFF00'}" />
+          <Switch checked={"#{@isChecked}"} phx-change="toggleCheck" colors="{'checkedThumbColor': '#FFFF0000', 'checkedTrackColor': '#FF00FF00', 'checkedBorderColor': '#FF0000FF', 'uncheckedThumbColor': '#FFCCCCCC'}" />
           <Text>Checkbox value: <%= @isChecked %></Text>
         </Row>
-        <Image resource="android_icon" height="96" background="#FFFF00FF" width="fill" alignment="centerEnd"/>
         <Text><%= @userText %></Text>
-        <TextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" imeAction="search" capitalization="words" phx-click="inc">
+        <TextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" ime-action="search" capitalization="words" phx-click="inc" colors="{'focusedContainerColor': '#FFFF0000', 'focusedTextColor': '#FF00FF00'}">
           <Text template="label">Label</Text>
           <Text template="placeholder">Placeholder</Text>
-          <Icon template="leadingIcon" imageVector="filled:Add" tint="#FFFF0000"/>
-          <Icon template="trailingIcon" imageVector="filled:ChevronLeft"/>
+          <Icon template="leadingIcon" image-vector="filled:Add" tint="#FFFF0000"/>
+          <Icon template="trailingIcon" image-vector="filled:ChevronLeft"/>
           <Text template="prefix">Pre</Text>
           <Text template="suffix">Suf</Text>
           <Text template="supportingText">Supporting text</Text>
         </TextField>
+        <OutlinedTextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" ime-action="search" capitalization="words" phx-click="inc" colors="{'focusedBorderColor': '#FFFF0000', 'unfocusedBorderColor': '#FF0000FF'}">
+          <Text template="label">Label</Text>
+          <Text template="placeholder">Placeholder</Text>
+          <Icon template="leadingIcon" image-vector="filled:Add" tint="#FFFF0000"/>
+          <Icon template="trailingIcon" image-vector="filled:ChevronLeft"/>
+          <Text template="prefix">Pre</Text>
+          <Text template="suffix">Suf</Text>
+          <Text template="supportingText">Supporting text</Text>
+        </OutlinedTextField>
         <Column>
           <Text>Value: <%= @sliderValue %></Text>
-          <Slider value={@sliderValue} phx-change="setSliderValue" minValue="0" maxValue="100" steps="5" phx-debounce="2000">
+          <Slider phx-value={@sliderValue} phx-change="setSliderValue" min-value="0" max-value="100" steps="5" phx-debounce="2000">
             <Box size="40" clip="4" background="#FFFF00FF" template="thumb"/>
             <Box width="fill" height="10" background="#FF0000FF" template="track"/>
           </Slider>
-
+          <Slider phx-value={@sliderValue} phx-change="setSliderValue" min-value="0" max-value="100" steps="5" phx-debounce="2000" colors="{'thumbColor': '#FFFF0000', 'activeTrackColor': '#FF00FF00', 'activeTickColor': '#FF0000FF', 'inactiveTrackColor': '#FFFFFF00'}" />
           <Text>Range: Start = <%= Enum.at(@sliderRange,0) %> | End <%= Enum.at(@sliderRange,1) %></Text>
-          <RangeSlider value={Enum.join(@sliderRange, ",")} phx-change="setSliderRange" minValue="0" maxValue="100" phx-debounce="300" />
+          <RangeSlider phx-value={Enum.join(@sliderRange, ",")} phx-change="setSliderRange" min-value="0" max-value="100" phx-debounce="300" />
         </Column>
         <Row width="fill" height="wrap" background="#FFCCCCCC">
-          <Box weight="0.25" background="#FFFF0000" height="50" contentAlignment="bottomEnd">
+          <Box weight="0.25" background="#FFFF0000" height="50" content-alignment="bottomEnd">
             <Text>25%</Text>
           </Box>
           <Box weight="0.35" background="#FF00FF00" height="50">
@@ -152,7 +186,7 @@ defmodule ScratchboardWeb.HelloLive do
             <Text align="center">40%</Text>
           </Box>
         </Row>
-        <Row height="100" width="fill" background="#FFCCCCCC" horizontalArrangement="spaceAround">
+        <Row height="100" width="fill" background="#FFCCCCCC" horizontal-arrangement="spaceAround">
           <Box background="#FFFF0000" size="70" align="top">
             <Text align="center">Top</Text>
           </Box>
@@ -192,6 +226,7 @@ defmodule ScratchboardWeb.HelloLive do
           width="140"
           height="120"
           elevation="{'defaultElevation': '10', 'pressedElevation': '2'}"
+          colors="{'containerColor': '#FFFF0000', 'contentColor': '#FF00FF00'}"
           phx-click="dec"
         >
           <Text padding="16">Hello Jetpack!</Text>
@@ -203,16 +238,16 @@ defmodule ScratchboardWeb.HelloLive do
         <Button
           padding="16"
           phx-click="navigate"
-          contentPadding="50"
+          content-padding="50"
           elevation="{'defaultElevation': '20', 'pressedElevation': '10'}"
         >
           <Text>Navigate to counter</Text>
         </Button>
         <Button phx-click="redirect"><Text>Redirect to counter</Text></Button>
-        <IconButton phx-click="inc" colors="{'containerColor': '#FFFF0000', 'contentColor': '#FFFFFFFF'}">
-          <Icon imageVector="filled:Add" />
+        <IconButton phx-click="inc" colors="{'containerColor': '#FFFF0000', 'contentColor': '#FFF0000FF', 'disabledContainerColor': '#25ff0000'}" >
+          <Icon image-vector="filled:Add" />
         </IconButton>
-        <Row verticalAlignment="center">
+        <Row vertical-alignment="center">
           <Button
             phx-click="dec"
             shape="circle"
@@ -224,9 +259,9 @@ defmodule ScratchboardWeb.HelloLive do
           <Button phx-click="inc" shape="circle" size="60"><Text>+</Text></Button>
         </Row>
         <Box size="100" background="#FFFF0000">
-          <Icon imageVector="filled:Add" align="topStart"/>
+          <Icon image-vector="filled:Add" align="topStart"/>
           <Text align="center">Text</Text>
-          <Icon imageVector="filled:Share" align="bottomEnd"/>
+          <Icon image-vector="filled:Share" align="bottomEnd"/>
         </Box>
         <%= if @showDialog do %>
         <AlertDialog phx-click="hideDialog">
@@ -236,16 +271,17 @@ defmodule ScratchboardWeb.HelloLive do
           <OutlinedButton phx-click="hideDialog" template="dismiss">
             <Text>Dismiss</Text>
           </OutlinedButton>
-          <Icon imageVector="filled:Add" template="icon"/>
+          <Icon image-vector="filled:Add" template="icon"/>
           <Text template="title">Alert Title</Text>
           <Text>Alert message</Text>
         </AlertDialog>
         <% end %>
       </Column>
       <%= if @showSnack do %>
-      <Snackbar message="Hi there!" dismissEvent="hideSnackbar" />
+      <Snackbar message="Hi there!" dismiss-event="hideSnackbar" />
       <% end %>
     </Scaffold>
+    </ModalNavigationDrawer>
     """
   end
 
