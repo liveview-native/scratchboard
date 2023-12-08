@@ -21,6 +21,8 @@ defmodule ScratchboardWeb.Router do
       live "/", ScratchboardWeb.HelloLive
       live "/counter", ScratchboardWeb.CounterLive
       live "/sampleGrid", ScratchboardWeb.SampleGrid
+      live "/sampleNavBar", ScratchboardWeb.SampleNavBar
+      live "/sampleNavBar/:tab", ScratchboardWeb.SampleNavBar
       live "/posts", ScratchboardWeb.PostsLive
       live "/components-test", ScratchboardWeb.ComponentsTestLive
       live "/webview-test", ScratchboardWeb.WebviewLive

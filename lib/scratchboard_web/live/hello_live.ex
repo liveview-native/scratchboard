@@ -66,6 +66,10 @@ defmodule ScratchboardWeb.HelloLive do
     {:noreply, push_navigate(socket, to: "/sampleGrid")}
   end
 
+  def handle_event("navigateToNavBar", _params, socket) do
+    {:noreply, push_navigate(socket, to: "/sampleNavBar")}
+  end
+
   def handle_event("redirect", _params, socket) do
     {:noreply, redirect(socket, to: "/counter")}
   end
@@ -96,14 +100,19 @@ defmodule ScratchboardWeb.HelloLive do
             <Text font-size="10" color="#FFFFFFFF">99+</Text>
           </Box>
         </NavigationDrawerItem>
+        <NavigationDrawerItem selected="true" phx-click="navigateToNavBar" colors="{'selectedContainerColor': '#FF00FF00'}">
+          <Icon image-vector="filled:Favorite" template="icon" />
+          <Text template="label">NavBar</Text>
+          <Text template="badge">99+</Text>
+        </NavigationDrawerItem>
       </ModalDrawerSheet>
-    <Scaffold>
-      <TopAppBar template="topBar">
+    <Scaffold top-bar-scroll-behavior="enterAlways">
+      <LargeTopAppBar template="topBar" colors="{'containerColor': '#FF0000FF', 'scrolledContainerColor': '#FFCCCCCC'}">
         <Text template="title">Hello</Text>
         <IconButton template="navigationIcon" phx-click="openDrawer">
           <Icon image-vector="filled:Menu" />
         </IconButton>
-      </TopAppBar>
+      </LargeTopAppBar>
       <ExtendedFloatingActionButton phx-click="inc" template="fab">
         <Icon image-vector="filled:Add" template="icon"/>
         <Text template="text">Increment</Text>
@@ -207,7 +216,7 @@ defmodule ScratchboardWeb.HelloLive do
           </Box>
         </Row>
         <%= if @bottomSheetState != "hidden" do %>
-        <ModalBottomSheet on-change="updateBottomSheet" sheet-value={"#{@bottomSheetState}"}>
+        <ModalBottomSheet on-changed="updateBottomSheet" sheet-value={"#{@bottomSheetState}"}>
           <Column height="200" width="200" background="#FFCCCCCC">
             <Box background="#FFFF0000" size="70" align="top">
               <Text align="start">Start</Text>

@@ -18,10 +18,10 @@ defmodule ScratchboardWeb.SampleGrid do
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
-    <Scaffold>
-      <TopAppBar template="topBar">
+    <Scaffold top-bar-scroll-behavior="exitUntilCollapsed">
+      <MediumTopAppBar template="topBar">
         <Text template="title">Grid</Text>
-      </TopAppBar>
+      </MediumTopAppBar>
       <BottomAppBar template="bottomBar">
         <IconButton phx-click="horizontalGrid" template="action">
           <Icon image-vector="filled:HorizontalDistribute" />
