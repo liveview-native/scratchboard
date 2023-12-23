@@ -41,7 +41,7 @@ defmodule ScratchboardWeb.SampleGrid do
         </LazyVerticalGrid>
       <% end %>
       <%= if @gridType == "horizontal" do %>
-        <LazyHorizontalGrid height="400" columns="{'type': 'fixed', 'count': '3'}" template="body" content-padding="4" horizontal-arrangement="2" vertical-arrangement="2">
+        <LazyHorizontalGrid height="400" rows="{'type': 'fixed', 'count': '3'}" template="body" content-padding="4" horizontal-arrangement="2" vertical-arrangement="2">
         <%= for x <- 1..50 do %>
           <Box background={"#{case rem(x, 4) do 0 -> "#FFFF0000"; 1-> "#FF00FF00"; 2 -> "#FF0000FF"; 3 -> "#FFFFFF00" end}"} content-alignment="center" aspect-ratio={"#{4/3}"}><Text>Item <%= x %></Text></Box>
         <% end %>

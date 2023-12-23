@@ -19,7 +19,7 @@ defmodule ScratchboardWeb.CounterLive do
       </TopAppBar>
       <Column template="body" scroll="vertical">
         <Text>Here</Text>
-        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" shape="circle" content-scale="fillHeight"/>
+        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" clip="circle" content-scale="fillHeight"/>
         <Text>Counter: <%= @count %> </Text>
         <Row scroll="horizontal">
           <Card shape="8" padding="8" elevation="{'defaultElevation': '10'}">

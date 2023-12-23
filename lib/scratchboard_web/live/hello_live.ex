@@ -70,6 +70,10 @@ defmodule ScratchboardWeb.HelloLive do
     {:noreply, push_navigate(socket, to: "/sampleNavBar")}
   end
 
+  def handle_event("navigateToTab", _params, socket) do
+    {:noreply, push_navigate(socket, to: "/sampleTab")}
+  end
+
   def handle_event("redirect", _params, socket) do
     {:noreply, redirect(socket, to: "/counter")}
   end
@@ -87,7 +91,7 @@ defmodule ScratchboardWeb.HelloLive do
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
     <ModalNavigationDrawer is-open={"#{@drawerIsOpen}"} on-close="closeDrawer" on-open="openDrawer" gestures-enabled="true" scrim-color="#FF000000">
-      <ModalDrawerSheet template="drawerContent" container-color="#FFFFFF00" content-color="#FFCCCCCC" shape="24" >
+      <ModalDrawerSheet template="drawerContent" drawer-container-color="#FFFFFF00" drawer-content-color="#FFCCCCCC" drawer-shape="24" >
         <NavigationDrawerItem selected="true" phx-click="navigateToGrid" colors="{'selectedContainerColor': '#FF00FF00'}">
           <Icon image-vector="filled:Favorite" template="icon" />
           <Text template="label">Grid</Text>
@@ -104,6 +108,9 @@ defmodule ScratchboardWeb.HelloLive do
           <Icon image-vector="filled:Favorite" template="icon" />
           <Text template="label">NavBar</Text>
           <Text template="badge">99+</Text>
+        </NavigationDrawerItem>
+        <NavigationDrawerItem phx-click="navigateToTab">
+          <Text template="label">Tab</Text>
         </NavigationDrawerItem>
       </ModalDrawerSheet>
     <Scaffold top-bar-scroll-behavior="enterAlways">
@@ -134,7 +141,7 @@ defmodule ScratchboardWeb.HelloLive do
         <TextButton phx-click="showDialog"><Text>TextButton</Text></TextButton>
         <Text>Combobox option <%= @ddOption %></Text>
         <ExposedDropdownMenuBox horizontal-padding="16">
-          <TextField text={"#{@ddOption}"} width="fill" read-only="true" menu-anchor/>
+          <TextField phx-value={"#{@ddOption}"} width="fill" read-only="true" menu-anchor/>
           <DropdownMenuItem phx-click="setDDOption" phx-value="A" colors="{'textColor': '#FFFF0000', 'leadingIconColor': '#FF00FF00', 'trailingIconColor': '#FFFFFF00'}" enabled="false">
             <Text>Option A</Text>
             <Icon image-vector="filled:Add" template="trailingIcon" />
@@ -165,7 +172,7 @@ defmodule ScratchboardWeb.HelloLive do
           <Text>Checkbox value: <%= @isChecked %></Text>
         </Row>
         <Text><%= @userText %></Text>
-        <TextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" ime-action="search" capitalization="words" phx-click="inc" colors="{'focusedContainerColor': '#FFFF0000', 'focusedTextColor': '#FF00FF00'}">
+        <TextField phx-value={"#{@userText}"} phx-change="setName" width="fill" padding="16" ime-action="search" capitalization="words" phx-click="inc" colors="{'focusedContainerColor': '#FFFF0000', 'focusedTextColor': '#FF00FF00'}">
           <Text template="label">Label</Text>
           <Text template="placeholder">Placeholder</Text>
           <Icon template="leadingIcon" image-vector="filled:Add" tint="#FFFF0000"/>
@@ -174,7 +181,7 @@ defmodule ScratchboardWeb.HelloLive do
           <Text template="suffix">Suf</Text>
           <Text template="supportingText">Supporting text</Text>
         </TextField>
-        <OutlinedTextField text={"#{@userText}"} phx-change="setName" width="fill" padding="16" ime-action="search" capitalization="words" phx-click="inc" colors="{'focusedBorderColor': '#FFFF0000', 'unfocusedBorderColor': '#FF0000FF'}">
+        <OutlinedTextField phx-value={"#{@userText}"} phx-change="setName" width="fill" padding="16" ime-action="search" capitalization="words" phx-click="inc" colors="{'focusedBorderColor': '#FFFF0000', 'unfocusedBorderColor': '#FF0000FF'}">
           <Text template="label">Label</Text>
           <Text template="placeholder">Placeholder</Text>
           <Icon template="leadingIcon" image-vector="filled:Add" tint="#FFFF0000"/>
