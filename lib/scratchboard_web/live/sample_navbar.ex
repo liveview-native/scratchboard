@@ -3,7 +3,6 @@ defmodule ScratchboardWeb.SampleNavBar do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    #IO.puts("mount")
     {:ok, socket}
   end
 

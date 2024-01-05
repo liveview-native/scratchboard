@@ -19,9 +19,9 @@ defmodule ScratchboardWeb.Router do
       pipe_through :browser
 
       live "/", ScratchboardWeb.HelloLive
+      live "/sampleBottomSheetScaffold", ScratchboardWeb.SampleBottomSheetScaffold
       live "/counter", ScratchboardWeb.CounterLive
       live "/sampleGrid", ScratchboardWeb.SampleGrid
-      live "/sampleNavBar", ScratchboardWeb.SampleNavBar
       live "/sampleNavBar/:tab", ScratchboardWeb.SampleNavBar
       live "/sampleTab", ScratchboardWeb.SampleTab
       live "/posts", ScratchboardWeb.PostsLive

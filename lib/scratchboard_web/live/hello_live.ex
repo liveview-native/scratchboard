@@ -67,11 +67,15 @@ defmodule ScratchboardWeb.HelloLive do
   end
 
   def handle_event("navigateToNavBar", _params, socket) do
-    {:noreply, push_navigate(socket, to: "/sampleNavBar")}
+    {:noreply, push_navigate(socket, to: "/sampleNavBar/1")}
   end
 
   def handle_event("navigateToTab", _params, socket) do
     {:noreply, push_navigate(socket, to: "/sampleTab")}
+  end
+
+  def handle_event("navigateToBottomSheetScaffold", _params, socket) do
+    {:noreply, push_navigate(socket, to: "/sampleBottomSheetScaffold")}
   end
 
   def handle_event("redirect", _params, socket) do
@@ -111,6 +115,9 @@ defmodule ScratchboardWeb.HelloLive do
         </NavigationDrawerItem>
         <NavigationDrawerItem phx-click="navigateToTab">
           <Text template="label">Tab</Text>
+        </NavigationDrawerItem>
+        <NavigationDrawerItem phx-click="navigateToBottomSheetScaffold">
+          <Text template="label">BottomSheetScaffold</Text>
         </NavigationDrawerItem>
       </ModalDrawerSheet>
     <Scaffold top-bar-scroll-behavior="enterAlways">
