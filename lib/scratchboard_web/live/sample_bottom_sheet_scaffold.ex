@@ -44,6 +44,11 @@ defmodule ScratchboardWeb.SampleBottomSheetScaffold do
         <DatePicker phx-change="selectDate" initial-selected-date-millis="1705028400000"/>
         <Text>Date: <%= @selectedDate %></Text>
         <TextButton phx-click="showDialog"><Text>Show Dialog</Text></TextButton>
+        <Box width="fill" height="400">
+          <DateRangePicker phx-change="selectDateRange" initial-selected-start-date-millis={"#{Enum.at(@dateRange,0)}"} initial-selected-end-date-millis={"#{Enum.at(@dateRange,1)}"}/>
+        </Box>
+        <Text>Date Start = <%= Enum.at(@dateRange,0) %></Text>
+        <Text>Date End <%= Enum.at(@dateRange,1) %></Text>
         <%= if @showDialog do %>
         <DatePickerDialog phx-click="hideDialog">
           <TextButton phx-click="hideDialog" template="confirm">
@@ -52,11 +57,6 @@ defmodule ScratchboardWeb.SampleBottomSheetScaffold do
           <DatePicker phx-change="selectDate" initial-selected-date-millis={"#{@selectedDate}"} show-toggle-mode="false" />
         </DatePickerDialog>
         <% end %>
-        <Box width="fill" height="400">
-          <DateRangePicker phx-change="selectDateRange" initial-selected-start-date-millis={"#{Enum.at(@dateRange,0)}"} initial-selected-end-date-millis={"#{Enum.at(@dateRange,1)}"}/>
-        </Box>
-        <Text>Date Start = <%= Enum.at(@dateRange,0) %></Text>
-        <Text>Date End <%= Enum.at(@dateRange,1) %></Text>
       </Column>
     </BottomSheetScaffold>
     """
