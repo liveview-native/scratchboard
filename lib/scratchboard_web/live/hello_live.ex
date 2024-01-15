@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.HelloLive do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 10) |> assign(:sliderRange, [10, 90]) |> assign(:isChecked, true) |> assign(:radioOption, "A") |> assign(:ddOption, "A") |> assign(:showDialog, false) |> assign(:showSnack, false) |> assign(:drawerIsOpen, false) |> assign(:bottomSheetState, "hidden")}
+    {:ok, socket |> assign(:val, 0) |> assign(:userText, "") |> assign(:sliderValue, 30) |> assign(:sliderRange, [10, 90]) |> assign(:isChecked, true) |> assign(:radioOption, "A") |> assign(:ddOption, "A") |> assign(:showDialog, false) |> assign(:showSnack, false) |> assign(:drawerIsOpen, false) |> assign(:bottomSheetState, "hidden")}
   end
 
   def handle_event("inc", _, socket) do
@@ -132,6 +132,13 @@ defmodule ScratchboardWeb.HelloLive do
         <Text template="text">Increment</Text>
       </ExtendedFloatingActionButton>
       <Column template="body" width="fill" vertical-arrangement="center" horizontal-alignment="center" scroll="vertical">
+        <Row>
+          <Icon image-vector="filled:Add" />
+          <Icon image-vector="rounded:Check" />
+          <Icon image-vector="outlined:Home" />
+          <Icon image-vector="sharp:Image" />
+          <Icon image-vector="twoTone:Share" />
+        </Row>
         <Row padding="16">
           <ElevatedCard weight="1" padding="4"><Text padding="16">Elevated Card</Text></ElevatedCard>
           <OutlinedCard weight="1" padding="4"><Text padding="16">Outlined Card</Text></OutlinedCard>

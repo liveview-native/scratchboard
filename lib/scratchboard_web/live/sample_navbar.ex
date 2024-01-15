@@ -3,11 +3,19 @@ defmodule ScratchboardWeb.SampleNavBar do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    {:ok, socket  |> assign(:selectedChoice, "0") |> assign(:selectedChoices, %{"0" => "false", "1" => "false", "2" => "true"})}
   end
 
   def handle_event("selectTab", tab, socket) do
     {:noreply, push_patch(socket, to: "/sampleNavBar/#{tab}")}
+  end
+
+  def handle_event("selectChoice", choice, socket) do
+    {:noreply, assign(socket, :selectedChoice, choice)}
+  end
+
+  def handle_event("selectMultiChoice", change, socket) do
+    {:noreply, assign(socket, :selectedChoices, Map.put(socket.assigns.selectedChoices, Enum.at(change, 0), Enum.at(change, 1)))}
   end
 
   def handle_params(params, _uri, socket) do
@@ -36,9 +44,32 @@ defmodule ScratchboardWeb.SampleNavBar do
           <Text template="label">Tab 3</Text>
         </NavigationBarItem>
       </NavigationBar>
-      <Box content-alignment="center" template="body" size="fill">
+      <Column vertical-arrangement="center" template="body" size="fill">
         <Text font-size="24">Selected <%= @selectedTab %></Text>
-      </Box>
+        <SingleChoiceSegmentedButtonRow>
+          <SegmentedButton selected={"#{@selectedChoice == "0"}"} phx-click="selectChoice" phx-value="0">
+            <Text template="label">Option 1</Text>
+          </SegmentedButton>
+          <SegmentedButton selected={"#{@selectedChoice == "1"}"} phx-click="selectChoice" phx-value="1">
+            <Text template="label">Option 2</Text>
+          </SegmentedButton>
+          <SegmentedButton selected={"#{@selectedChoice == "2"}"} phx-click="selectChoice" phx-value="2">
+            <Text template="label">Option 3</Text>
+          </SegmentedButton>
+        </SingleChoiceSegmentedButtonRow>
+
+        <MultiChoiceSegmentedButtonRow>
+          <SegmentedButton checked={"#{Map.get(@selectedChoices, "0")}"} phx-change="selectMultiChoice" phx-value="0">
+            <Text template="label">Option 1</Text>
+          </SegmentedButton>
+          <SegmentedButton checked={"#{Map.get(@selectedChoices, "1")}"} phx-change="selectMultiChoice" phx-value="1">
+            <Text template="label">Option 2</Text>
+          </SegmentedButton>
+          <SegmentedButton checked={"#{Map.get(@selectedChoices, "2")}"} phx-change="selectMultiChoice" phx-value="2">
+            <Text template="label">Option 3</Text>
+          </SegmentedButton>
+        </MultiChoiceSegmentedButtonRow>
+      </Column>
     </Scaffold>
     """
   end
