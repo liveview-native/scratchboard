@@ -3,11 +3,19 @@ defmodule ScratchboardWeb.SampleTab do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:selectedTab, "0") }
+    {:ok, socket |> assign(:backCounter, 3) |> assign(:selectedTab, "0") |> assign(:selectedTimeMap, %{"hour" => 13, "minute" => 21, "is24Hour" => true}) }
   end
 
   def handle_event("selectTab", tab, socket) do
     {:noreply, assign(socket, :selectedTab, tab)}
+  end
+
+  def handle_event("onTimeChange", timeMap, socket) do
+    {:noreply, assign(socket, :selectedTimeMap, timeMap)}
+  end
+
+  def handle_event("onBackPressed", _, socket) do
+    {:noreply, assign(socket, :backCounter, socket.assigns.backCounter - 1)}
   end
 
   @impl true
@@ -19,6 +27,7 @@ defmodule ScratchboardWeb.SampleTab do
         <Text template="title">Navigation Bar</Text>
       </CenterAlignedTopAppBar>
       <Column size="fill" template="body">
+        <BackHandler enabled={"#{ @backCounter > 0}"} phx-keyup="onBackPressed"} />
         <TabRow selected-tab-index={"#{@selectedTab}"}>
           <Tab selected={"#{@selectedTab == "0"}"} phx-click="selectTab" phx-value="0">
             <Text template="text">Tab 0</Text>
@@ -30,9 +39,61 @@ defmodule ScratchboardWeb.SampleTab do
             <Text template="text">Tab 2</Text>
           </Tab>
         </TabRow>
-        <Box content-alignment="center"  size="fill">
-          <Text font-size="24">Selected <%= @selectedTab %></Text>
-        </Box>
+        <Text>Back counter <%= @backCounter %></Text>
+        <HorizontalPager current-page={"#{@selectedTab}"} page-count="3" phx-change="selectTab">
+          <Column content-alignment="center" background="system-red" size="fill">
+          <FlowColumn scroll="horizontal">
+          <%= for x <- 1..50 do %>
+            <OutlinedButton phx-click=""><Text>Item <%= x %></Text></OutlinedButton>
+          <% end %>
+          </FlowColumn>
+          </Column>
+          <LazyColumn size="fill">
+            <ListItem >
+              <Text template="headlineContent">Headline</Text>
+            </ListItem>
+            <ListItem>
+              <Text template="headlineContent">Headline</Text>
+              <Icon template="leadingContent" image-vector="filled:Add" />
+              <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+            </ListItem>
+            <ListItem>
+              <Text template="headlineContent">Headline</Text>
+              <Text template="overlineContent">OverlineContent</Text>
+            </ListItem>
+            <ListItem>
+              <Text template="headlineContent">Headline</Text>
+              <Text template="overlineContent">OverlineContent</Text>
+              <Icon template="leadingContent" image-vector="filled:Add" />
+              <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+            </ListItem>
+            <ListItem>
+              <Text template="headlineContent">Headline</Text>
+              <Text template="overlineContent">Overline Content</Text>
+              <Text template="supportingContent">Supporting Content</Text>
+            </ListItem>
+            <ListItem>
+              <Text template="headlineContent">Headline</Text>
+              <Text template="overlineContent">Overline Content</Text>
+              <Text template="supportingContent">Supporting Content</Text>
+              <Icon template="leadingContent" image-vector="filled:Add" />
+            </ListItem>
+            <ListItem>
+              <Text template="headlineContent">Headline</Text>
+              <Text template="overlineContent">Overline Content</Text>
+              <Text template="supportingContent">Supporting Content</Text>
+              <Icon template="leadingContent" image-vector="filled:Add" />
+              <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+            </ListItem>
+          </LazyColumn>
+          <Column background="system-blue" size="fill">
+            <Text font-size="24">Time <%= Map.get(@selectedTimeMap, "hour") %>:<%= Map.get(@selectedTimeMap, "minute") |> Integer.to_string |> String.pad_leading(2, "0") %></Text>
+            <TimeInput
+              initial-hour={"#{Map.get(@selectedTimeMap, "hour")}"}
+              initial-minute={"#{Map.get(@selectedTimeMap, "minute")}"}
+              phx-change="onTimeChange" />
+          </Column>
+        </HorizontalPager>
       </Column>
     </Scaffold>
     """

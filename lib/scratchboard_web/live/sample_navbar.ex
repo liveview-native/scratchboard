@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.SampleNavBar do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket  |> assign(:selectedChoice, "0") |> assign(:selectedChoices, %{"0" => "false", "1" => "false", "2" => "true"})}
+    {:ok, socket  |> assign(:selectedChoice, "0") |> assign(:selectedChoices, %{"0" => "false", "1" => "false", "2" => "true"}) |> assign(:isChecked, true)}
   end
 
   def handle_event("selectTab", tab, socket) do
@@ -16,6 +16,10 @@ defmodule ScratchboardWeb.SampleNavBar do
 
   def handle_event("selectMultiChoice", change, socket) do
     {:noreply, assign(socket, :selectedChoices, Map.put(socket.assigns.selectedChoices, Enum.at(change, 0), Enum.at(change, 1)))}
+  end
+
+  def handle_event("toggleCheck", value, socket) do
+    {:noreply, assign(socket, :isChecked, value)}
   end
 
   def handle_params(params, _uri, socket) do
@@ -46,6 +50,9 @@ defmodule ScratchboardWeb.SampleNavBar do
       </NavigationBar>
       <Column vertical-arrangement="center" template="body" size="fill">
         <Text font-size="24">Selected <%= @selectedTab %></Text>
+        <OutlinedIconToggleButton checked={"#{@isChecked}"} phx-change="toggleCheck">
+          <Icon image-vector="filled:Check" />
+        </OutlinedIconToggleButton>
         <SingleChoiceSegmentedButtonRow>
           <SegmentedButton selected={"#{@selectedChoice == "0"}"} phx-click="selectChoice" phx-value="0">
             <Text template="label">Option 1</Text>

@@ -170,7 +170,7 @@ defmodule ScratchboardWeb.HelloLive do
         </ExposedDropdownMenuBox>
         <CircularProgressIndicator color="#FFFF0000" track-color="#FF00FF00" stroke-cap="butt" />
         <LinearProgressIndicator color="#FFFF0000" track-color="#FF00FF00" stroke-cap="butt" padding="16" width="fill" />
-        <Divider thickness="2" vertical-padding="8" color="#FFCCCCCC" />
+        <HorizontalDivider thickness="2" vertical-padding="8" color="#FFCCCCCC" />
         <Row vertical-alignment="center">
           <RadioButton phx-value="A" phx-change="setRadioOption" selected={"#{@radioOption == "A"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}" />
           <Text>A</Text>
@@ -179,7 +179,7 @@ defmodule ScratchboardWeb.HelloLive do
           <RadioButton phx-value="C" phx-change="setRadioOption" selected={"#{@radioOption == "C"}"} colors="{'selectedColor': '#FFFF0000', 'unselectedColor': '#FF00FF00'}"/>
           <Text>C</Text>
         </Row>
-        <Divider thickness="1" vertical-padding="8" />
+        <HorizontalDivider thickness="1" vertical-padding="8" />
         <Row vertical-alignment="center">
           <CheckBox checked={"#{@isChecked}"} phx-change="toggleCheck" colors="{'checkedColor': '#FFFF0000', 'uncheckedColor': '#FF00FF00', 'checkmarkColor': '#FFFFFF00'}" />
           <Switch checked={"#{@isChecked}"} phx-change="toggleCheck" colors="{'checkedThumbColor': '#FFFF0000', 'checkedTrackColor': '#FF00FF00', 'checkedBorderColor': '#FF0000FF', 'uncheckedThumbColor': '#FFCCCCCC'}" />
