@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.SampleNavBar do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket  |> assign(:selectedChoice, "0") |> assign(:selectedChoices, %{"0" => "false", "1" => "false", "2" => "true"}) |> assign(:isChecked, true)}
+    {:ok, socket  |> assign(:selectedChoice, "0") |> assign(:selectedChoices, %{"0" => "false", "1" => "false", "2" => "true"}) |> assign(:isChecked, true) |> assign(:counter, 0)}
   end
 
   def handle_event("selectTab", tab, socket) do
@@ -20,6 +20,10 @@ defmodule ScratchboardWeb.SampleNavBar do
 
   def handle_event("toggleCheck", value, socket) do
     {:noreply, assign(socket, :isChecked, value)}
+  end
+
+  def handle_event("onClick", _, socket) do
+    {:noreply, assign(socket, :counter, socket.assigns.counter + 1)}
   end
 
   def handle_params(params, _uri, socket) do
@@ -76,6 +80,13 @@ defmodule ScratchboardWeb.SampleNavBar do
             <Text template="label">Option 3</Text>
           </SegmentedButton>
         </MultiChoiceSegmentedButtonRow>
+
+        <Text>Counter: <%= @counter %></Text>
+        <Surface shape="12" color="system-blue" content-color="system-white"
+          border="{'width': '2', 'color': 'system-green'}"
+          phx-click="onClick">
+          <Text padding="32">Surface</Text>
+        </Surface>
       </Column>
     </Scaffold>
     """

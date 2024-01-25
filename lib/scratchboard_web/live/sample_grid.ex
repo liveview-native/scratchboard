@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.SampleGrid do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:gridType, "vertical") }
+    {:ok, socket |> assign(:gridType, "vertical") |> assign(:showPopup, false) |> assign(:menuOption, "") }
   end
 
   def handle_event("horizontalGrid", _, socket) do
@@ -14,13 +14,36 @@ defmodule ScratchboardWeb.SampleGrid do
     {:noreply, assign(socket, :gridType, "vertical")}
   end
 
+  def handle_event("showPopup", _params, socket) do
+    {:noreply, assign(socket, :showPopup, true)}
+  end
+
+  def handle_event("hidePopup", _params, socket) do
+    {:noreply, assign(socket, :showPopup, false)}
+  end
+
+  def handle_event("onMenuOptionClick", _params, socket) do
+    {:noreply, socket |> assign(:menuOption, _params) |> assign(:showPopup, false) }
+  end
+
   @impl true
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
     <Scaffold top-bar-scroll-behavior="exitUntilCollapsed">
       <MediumTopAppBar template="topBar">
-        <Text template="title">Grid</Text>
+        <Text template="title">Grid <%= @menuOption %></Text>
+        <IconButton template="action" phx-click="showPopup">
+          <Icon image-vector="filled:MoreVert" />
+          <DropdownMenu phx-click="hidePopup" expanded={"#{ @showPopup }"}>
+            <DropdownMenuItem phx-click="onMenuOptionClick" phx-value="A">
+              <Text>Option A</Text>
+            </DropdownMenuItem>
+            <DropdownMenuItem phx-click="onMenuOptionClick" phx-value="B">
+              <Text>Option B</Text>
+            </DropdownMenuItem>
+          </DropdownMenu>
+        </IconButton>
       </MediumTopAppBar>
       <BottomAppBar template="bottomBar">
         <IconButton phx-click="horizontalGrid" template="action">

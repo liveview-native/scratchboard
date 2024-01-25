@@ -94,8 +94,8 @@ defmodule ScratchboardWeb.HelloLive do
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
-    <ModalNavigationDrawer is-open={"#{@drawerIsOpen}"} on-close="closeDrawer" on-open="openDrawer" gestures-enabled="true" scrim-color="#FF000000">
-      <ModalDrawerSheet template="drawerContent" drawer-container-color="#FFFFFF00" drawer-content-color="#FFCCCCCC" drawer-shape="24" >
+    <DismissibleNavigationDrawer is-open={"#{@drawerIsOpen}"} on-close="closeDrawer" on-open="openDrawer" gestures-enabled="true" scrim-color="#FF000000">
+      <DismissibleDrawerSheet template="drawerContent" drawer-container-color="#FFFFFF00" drawer-content-color="#FFCCCCCC" drawer-shape="24" >
         <NavigationDrawerItem selected="true" phx-click="navigateToGrid" colors="{'selectedContainerColor': '#FF00FF00'}">
           <Icon image-vector="filled:Favorite" template="icon" />
           <Text template="label">Grid</Text>
@@ -119,7 +119,7 @@ defmodule ScratchboardWeb.HelloLive do
         <NavigationDrawerItem phx-click="navigateToBottomSheetScaffold">
           <Text template="label">BottomSheetScaffold</Text>
         </NavigationDrawerItem>
-      </ModalDrawerSheet>
+      </DismissibleDrawerSheet>
     <Scaffold top-bar-scroll-behavior="enterAlways">
       <LargeTopAppBar template="topBar" colors="{'containerColor': '#FF0000FF', 'scrolledContainerColor': '#FFCCCCCC'}">
         <Text template="title">Hello</Text>
@@ -324,7 +324,7 @@ defmodule ScratchboardWeb.HelloLive do
       <Snackbar message="Hi there!" dismiss-event="hideSnackbar" />
       <% end %>
     </Scaffold>
-    </ModalNavigationDrawer>
+    </DismissibleNavigationDrawer>
     """
   end
 
