@@ -140,7 +140,14 @@ defmodule ScratchboardWeb.HelloLive do
           <Icon image-vector="twoTone:Share" />
         </Row>
         <Row padding="16">
-          <ElevatedCard weight="1" padding="4"><Text padding="16">Elevated Card</Text></ElevatedCard>
+          <TooltipBox weight="1" padding="4" initial-is-visible="true" is-persistent="true">
+            <RichTooltip template="tooltip">
+              <Text template="title">Title</Text>
+              <Text template="text">Text</Text>
+              <Button template="action" phx-click="showSnackbar"><Text>Action</Text></Button>
+            </RichTooltip>
+            <ElevatedCard template="content"><Text padding="16">Elevated Card</Text></ElevatedCard>
+          </TooltipBox>
           <OutlinedCard weight="1" padding="4"><Text padding="16">Outlined Card</Text></OutlinedCard>
         </Row>
         <OutlinedButton phx-click="showDialog"><Text>Show Dialog</Text></OutlinedButton>

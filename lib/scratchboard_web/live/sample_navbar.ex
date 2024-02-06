@@ -3,7 +3,7 @@ defmodule ScratchboardWeb.SampleNavBar do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket  |> assign(:selectedChoice, "0") |> assign(:selectedChoices, %{"0" => "false", "1" => "false", "2" => "true"}) |> assign(:isChecked, true) |> assign(:counter, 0)}
+    {:ok, socket  |> assign(:selectedChoice, "0") |> assign(:selectedChoices, %{"0" => "false", "1" => "false", "2" => "true"}) |> assign(:isChecked, true) |> assign(:counter, 0) |> assign(:queryText, "") |> assign(:showDismissable, true)}
   end
 
   def handle_event("selectTab", tab, socket) do
@@ -30,6 +30,18 @@ defmodule ScratchboardWeb.SampleNavBar do
     {:noreply, assign(socket, :selectedTab, Map.get(params, "tab", "0") )}
   end
 
+  def handle_event("onQueryChange", q, socket) do
+    {:noreply, assign(socket, :queryText, q)}
+  end
+
+  def handle_event("onSearch", q, socket) do
+    {:noreply, assign(socket, :queryText, q)}
+  end
+
+  def handle_event("onSwipeChanged", _, socket) do
+    {:noreply, assign(socket, :showDismissable, false)}
+  end
+
   @impl true
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
@@ -53,6 +65,26 @@ defmodule ScratchboardWeb.SampleNavBar do
         </NavigationBarItem>
       </NavigationBar>
       <Column vertical-arrangement="center" template="body" size="fill">
+        <%= if @showDismissable do %>
+        <SwipeToDismissBox on-value-changed="onSwipeChanged">
+          <ListItem template="content">
+            <Text template="headlineContent">Headline</Text>
+            <Icon template="leadingContent" image-vector="filled:Add" />
+            <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+          </ListItem>
+          <Box background="system-red" padding="12" template="backgroundContent" width="fill">
+            <Icon image-vector="filled:Delete" />
+          </Box>
+        </SwipeToDismissBox>
+        <% end %>
+        <DockedSearchBar query={"#{@queryText}"} phx-change="onQueryChange" active="false" phx-value="Foo" phx-submit="onSearch">
+          <Icon image-vector="filled:Search"  template="leadingIcon"/>
+          <IconButton phx-click="" template="trailingIcon">
+            <Icon image-vector="filled:Clear" />
+          </IconButton>
+          <Text template="placeholder">Placeholder</Text>
+          <Text template="content">Searching by: <%= @queryText %></Text>
+        </DockedSearchBar>
         <Text font-size="24">Selected <%= @selectedTab %></Text>
         <OutlinedIconToggleButton checked={"#{@isChecked}"} phx-change="toggleCheck">
           <Icon image-vector="filled:Check" />
@@ -87,6 +119,29 @@ defmodule ScratchboardWeb.SampleNavBar do
           phx-click="onClick">
           <Text padding="32">Surface</Text>
         </Surface>
+
+        <FlowRow>
+          <AssistChip phx-click="">
+            <Icon image-vector="filled:Check" template="leadingIcon"/>
+            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Text template="label">AssitChip</Text>
+          </AssistChip>
+          <ElevatedAssistChip phx-click="">
+            <Icon image-vector="filled:Check" template="leadingIcon"/>
+            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Text template="label">AssitChip</Text>
+          </ElevatedAssistChip>
+          <FilterChip phx-click="" selected="true">
+            <Icon image-vector="filled:Check" template="leadingIcon"/>
+            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Text template="label">Filter Chip 1</Text>
+          </FilterChip>
+          <FilterChip phx-click="" selected="false">
+            <Icon image-vector="filled:Check" template="leadingIcon"/>
+            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Text template="label">Filter Chip 2</Text>
+          </FilterChip>
+        </FlowRow>
       </Column>
     </Scaffold>
     """
