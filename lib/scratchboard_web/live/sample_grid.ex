@@ -30,11 +30,11 @@ defmodule ScratchboardWeb.SampleGrid do
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
-    <Scaffold top-bar-scroll-behavior="exitUntilCollapsed">
+    <Scaffold topBarScrollBehavior="exitUntilCollapsed">
       <MediumTopAppBar template="topBar">
         <Text template="title">Grid <%= @menuOption %></Text>
         <IconButton template="action" phx-click="showPopup">
-          <Icon image-vector="filled:MoreVert" />
+          <Icon imageVector="filled:MoreVert" />
           <DropdownMenu phx-click="hidePopup" expanded={"#{ @showPopup }"}>
             <DropdownMenuItem phx-click="onMenuOptionClick" phx-value="A">
               <Text>Option A</Text>
@@ -47,26 +47,26 @@ defmodule ScratchboardWeb.SampleGrid do
       </MediumTopAppBar>
       <BottomAppBar template="bottomBar">
         <IconButton phx-click="horizontalGrid" template="action">
-          <Icon image-vector="filled:HorizontalDistribute" />
+          <Icon imageVector="filled:HorizontalDistribute" />
         </IconButton>
         <IconButton phx-click="verticalGrid" template="action">
-          <Icon image-vector="filled:VerticalDistribute" />
+          <Icon imageVector="filled:VerticalDistribute" />
         </IconButton>
         <FloatingActionButton phx-click="verticalGrid" template="fab" shape="12">
-          <Icon image-vector="filled:Add"/>
+          <Icon imageVector="filled:Add"/>
         </FloatingActionButton>
       </BottomAppBar>
       <%= if @gridType == "vertical" do %>
-        <LazyVerticalGrid columns="{'type': 'fixed', 'count': '3'}" template="body" content-padding="4" horizontal-arrangement="2" vertical-arrangement="2">
+        <LazyVerticalGrid columns="{'type': 'fixed', 'count': '3'}" template="body" contentPadding="4" horizontalArrangement="2" verticalArrangement="2">
           <%= for x <- 1..50 do %>
-            <Box background={"#{case rem(x, 4) do 0 -> "#FFFF0000"; 1-> "#FF00FF00"; 2 -> "#FF0000FF"; 3 -> "#FFFFFF00" end}"} content-alignment="center" aspect-ratio={"#{4/3}"}><Text>Item <%= x %></Text></Box>
+            <Box background={"#{case rem(x, 4) do 0 -> "#FFFF0000"; 1-> "#FF00FF00"; 2 -> "#FF0000FF"; 3 -> "#FFFFFF00" end}"} contentAlignment="center" aspectRatio={"#{4/3}"}><Text>Item <%= x %></Text></Box>
           <% end %>
         </LazyVerticalGrid>
       <% end %>
       <%= if @gridType == "horizontal" do %>
-        <LazyHorizontalGrid height="400" rows="{'type': 'fixed', 'count': '3'}" template="body" content-padding="4" horizontal-arrangement="2" vertical-arrangement="2">
+        <LazyHorizontalGrid height="400" rows="{'type': 'fixed', 'count': '3'}" template="body" contentPadding="4" horizontalArrangement="2" verticalArrangement="2">
         <%= for x <- 1..50 do %>
-          <Box background={"#{case rem(x, 4) do 0 -> "#FFFF0000"; 1-> "#FF00FF00"; 2 -> "#FF0000FF"; 3 -> "#FFFFFF00" end}"} content-alignment="center" aspect-ratio={"#{4/3}"}><Text>Item <%= x %></Text></Box>
+          <Box background={"#{case rem(x, 4) do 0 -> "#FFFF0000"; 1-> "#FF00FF00"; 2 -> "#FF0000FF"; 3 -> "#FFFFFF00" end}"} contentAlignment="center" aspectRatio={"#{4/3}"}><Text>Item <%= x %></Text></Box>
         <% end %>
         </LazyHorizontalGrid>
       <% end %>

@@ -30,22 +30,22 @@ defmodule ScratchboardWeb.SampleBottomSheetScaffold do
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(%{platform_id: :jetpack} = assigns) do
     ~JETPACK"""
-    <BottomSheetScaffold sheet-value={"#{@sheetValue}"} sheet-skip-hidden-state="false" sheet-on-changed="toggleSheet">
+    <BottomSheetScaffold sheetValue={"#{@sheetValue}"} sheetSkipHiddenState="false" sheetOnChanged="toggleSheet">
       <TopAppBar template="topBar">
         <Text template="title">DatePicker</Text>
       </TopAppBar>
-      <Box size="fill" content-alignment="center" template="sheetContent">
+      <Box size="fill" contentAlignment="center" template="sheetContent">
         <Text>Sheet</Text>
       </Box>
       <Column width="fill" scroll="vertical" template="body">
         <Button phx-click="toggleSheet" phx-value={if @sheetValue == "hidden", do: "partiallyExpanded", else: "hidden"}>
           <Text>Toggle</Text>
         </Button>
-        <DatePicker phx-change="selectDate" initial-selected-date-millis="1705028400000"/>
+        <DatePicker phx-change="selectDate" initialSelectedDateMillis="1705028400000"/>
         <Text>Date: <%= @selectedDate %></Text>
         <TextButton phx-click="showDialog"><Text>Show Dialog</Text></TextButton>
         <Box width="fill" height="400">
-          <DateRangePicker phx-change="selectDateRange" initial-selected-start-date-millis={"#{Enum.at(@dateRange,0)}"} initial-selected-end-date-millis={"#{Enum.at(@dateRange,1)}"}/>
+          <DateRangePicker phx-change="selectDateRange" initialSelectedStartDateMillis={"#{Enum.at(@dateRange,0)}"} initialSelectedEndDateMillis={"#{Enum.at(@dateRange,1)}"}/>
         </Box>
         <Text>Date Start = <%= Enum.at(@dateRange,0) %></Text>
         <Text>Date End <%= Enum.at(@dateRange,1) %></Text>
@@ -54,7 +54,7 @@ defmodule ScratchboardWeb.SampleBottomSheetScaffold do
           <TextButton phx-click="hideDialog" template="confirm">
             <Text>Confirm</Text>
           </TextButton>
-          <DatePicker phx-change="selectDate" initial-selected-date-millis={"#{@selectedDate}"} show-toggle-mode="false" />
+          <DatePicker phx-change="selectDate" initialSelectedDateMillis={"#{@selectedDate}"} showToggleMode="false" />
         </DatePickerDialog>
         <% end %>
       </Column>

@@ -52,42 +52,42 @@ defmodule ScratchboardWeb.SampleNavBar do
       </CenterAlignedTopAppBar>
       <NavigationBar template="bottomBar">
         <NavigationBarItem selected={"#{@selectedTab == "0"}"} phx-click="selectTab" phx-value="0">
-          <Icon image-vector="filled:HorizontalDistribute" template="icon"/>
+          <Icon imageVector="filled:HorizontalDistribute" template="icon"/>
           <Text template="label">Tab 1</Text>
         </NavigationBarItem>
         <NavigationBarItem selected={"#{@selectedTab == "1"}"} phx-click="selectTab" phx-value="1">
-          <Icon image-vector="filled:VerticalDistribute" template="icon" />
+          <Icon imageVector="filled:VerticalDistribute" template="icon" />
           <Text template="label">Tab 2</Text>
         </NavigationBarItem>
         <NavigationBarItem selected={"#{@selectedTab == "2"}"} phx-click="selectTab" phx-value="2">
-          <Icon image-vector="filled:Add"  template="icon"/>
+          <Icon imageVector="filled:Add"  template="icon"/>
           <Text template="label">Tab 3</Text>
         </NavigationBarItem>
       </NavigationBar>
-      <Column vertical-arrangement="center" template="body" size="fill">
+      <Column verticalArrangement="center" template="body" size="fill">
         <%= if @showDismissable do %>
-        <SwipeToDismissBox on-value-changed="onSwipeChanged">
+        <SwipeToDismissBox onValueChanged="onSwipeChanged">
           <ListItem template="content">
             <Text template="headlineContent">Headline</Text>
-            <Icon template="leadingContent" image-vector="filled:Add" />
-            <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+            <Icon template="leadingContent" imageVector="filled:Add" />
+            <Icon template="trailingContent" imageVector="filled:ChevronRight" />
           </ListItem>
           <Box background="system-red" padding="12" template="backgroundContent" width="fill">
-            <Icon image-vector="filled:Delete" />
+            <Icon imageVector="filled:Delete" />
           </Box>
         </SwipeToDismissBox>
         <% end %>
         <DockedSearchBar query={"#{@queryText}"} phx-change="onQueryChange" active="false" phx-value="Foo" phx-submit="onSearch">
-          <Icon image-vector="filled:Search"  template="leadingIcon"/>
+          <Icon imageVector="filled:Search"  template="leadingIcon"/>
           <IconButton phx-click="" template="trailingIcon">
-            <Icon image-vector="filled:Clear" />
+            <Icon imageVector="filled:Clear" />
           </IconButton>
           <Text template="placeholder">Placeholder</Text>
           <Text template="content">Searching by: <%= @queryText %></Text>
         </DockedSearchBar>
-        <Text font-size="24">Selected <%= @selectedTab %></Text>
+        <Text fontSize="24">Selected <%= @selectedTab %></Text>
         <OutlinedIconToggleButton checked={"#{@isChecked}"} phx-change="toggleCheck">
-          <Icon image-vector="filled:Check" />
+          <Icon imageVector="filled:Check" />
         </OutlinedIconToggleButton>
         <SingleChoiceSegmentedButtonRow>
           <SegmentedButton selected={"#{@selectedChoice == "0"}"} phx-click="selectChoice" phx-value="0">
@@ -114,7 +114,7 @@ defmodule ScratchboardWeb.SampleNavBar do
         </MultiChoiceSegmentedButtonRow>
 
         <Text>Counter: <%= @counter %></Text>
-        <Surface shape="12" color="system-blue" content-color="system-white"
+        <Surface shape="12" color="system-blue" contentColor="system-white"
           border="{'width': '2', 'color': 'system-green'}"
           phx-click="onClick">
           <Text padding="32">Surface</Text>
@@ -122,23 +122,23 @@ defmodule ScratchboardWeb.SampleNavBar do
 
         <FlowRow>
           <AssistChip phx-click="">
-            <Icon image-vector="filled:Check" template="leadingIcon"/>
-            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Icon imageVector="filled:Check" template="leadingIcon"/>
+            <Icon imageVector="filled:CheckCircleOutline" template="trailingIcon"/>
             <Text template="label">AssitChip</Text>
           </AssistChip>
           <ElevatedAssistChip phx-click="">
-            <Icon image-vector="filled:Check" template="leadingIcon"/>
-            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Icon imageVector="filled:Check" template="leadingIcon"/>
+            <Icon imageVector="filled:CheckCircleOutline" template="trailingIcon"/>
             <Text template="label">AssitChip</Text>
           </ElevatedAssistChip>
           <FilterChip phx-click="" selected="true">
-            <Icon image-vector="filled:Check" template="leadingIcon"/>
-            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Icon imageVector="filled:Check" template="leadingIcon"/>
+            <Icon imageVector="filled:CheckCircleOutline" template="trailingIcon"/>
             <Text template="label">Filter Chip 1</Text>
           </FilterChip>
           <FilterChip phx-click="" selected="false">
-            <Icon image-vector="filled:Check" template="leadingIcon"/>
-            <Icon image-vector="filled:CheckCircleOutline" template="trailingIcon"/>
+            <Icon imageVector="filled:Check" template="leadingIcon"/>
+            <Icon imageVector="filled:CheckCircleOutline" template="trailingIcon"/>
             <Text template="label">Filter Chip 2</Text>
           </FilterChip>
         </FlowRow>

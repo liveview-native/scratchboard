@@ -28,7 +28,7 @@ defmodule ScratchboardWeb.SampleTab do
       </CenterAlignedTopAppBar>
       <Column size="fill" template="body">
         <BackHandler enabled={"#{ @backCounter > 0}"} phx-keyup="onBackPressed"} />
-        <TabRow selected-tab-index={"#{@selectedTab}"}>
+        <TabRow selectedTabIndex={"#{@selectedTab}"}>
           <Tab selected={"#{@selectedTab == "0"}"} phx-click="selectTab" phx-value="0">
             <Text template="text">Tab 0</Text>
           </Tab>
@@ -40,8 +40,8 @@ defmodule ScratchboardWeb.SampleTab do
           </Tab>
         </TabRow>
         <Text>Back counter <%= @backCounter %></Text>
-        <HorizontalPager current-page={"#{@selectedTab}"} page-count="3" phx-change="selectTab">
-          <Column content-alignment="center" background="system-red" size="fill">
+        <HorizontalPager currentPage={"#{@selectedTab}"} pageCount="3" phx-change="selectTab">
+          <Column contentAlignment="center" background="system-red" size="fill">
           <FlowColumn scroll="horizontal">
           <%= for x <- 1..50 do %>
             <OutlinedButton phx-click=""><Text>Item <%= x %></Text></OutlinedButton>
@@ -54,8 +54,8 @@ defmodule ScratchboardWeb.SampleTab do
             </ListItem>
             <ListItem>
               <Text template="headlineContent">Headline</Text>
-              <Icon template="leadingContent" image-vector="filled:Add" />
-              <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+              <Icon template="leadingContent" imageVector="filled:Add" />
+              <Icon template="trailingContent" imageVector="filled:ChevronRight" />
             </ListItem>
             <ListItem>
               <Text template="headlineContent">Headline</Text>
@@ -64,8 +64,8 @@ defmodule ScratchboardWeb.SampleTab do
             <ListItem>
               <Text template="headlineContent">Headline</Text>
               <Text template="overlineContent">OverlineContent</Text>
-              <Icon template="leadingContent" image-vector="filled:Add" />
-              <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+              <Icon template="leadingContent" imageVector="filled:Add" />
+              <Icon template="trailingContent" imageVector="filled:ChevronRight" />
             </ListItem>
             <ListItem>
               <Text template="headlineContent">Headline</Text>
@@ -76,21 +76,21 @@ defmodule ScratchboardWeb.SampleTab do
               <Text template="headlineContent">Headline</Text>
               <Text template="overlineContent">Overline Content</Text>
               <Text template="supportingContent">Supporting Content</Text>
-              <Icon template="leadingContent" image-vector="filled:Add" />
+              <Icon template="leadingContent" imageVector="filled:Add" />
             </ListItem>
             <ListItem>
               <Text template="headlineContent">Headline</Text>
               <Text template="overlineContent">Overline Content</Text>
               <Text template="supportingContent">Supporting Content</Text>
-              <Icon template="leadingContent" image-vector="filled:Add" />
-              <Icon template="trailingContent" image-vector="filled:ChevronRight" />
+              <Icon template="leadingContent" imageVector="filled:Add" />
+              <Icon template="trailingContent" imageVector="filled:ChevronRight" />
             </ListItem>
           </LazyColumn>
           <Column background="system-blue" size="fill">
-            <Text font-size="24">Time <%= Map.get(@selectedTimeMap, "hour") %>:<%= Map.get(@selectedTimeMap, "minute") |> Integer.to_string |> String.pad_leading(2, "0") %></Text>
+            <Text fontSize="24">Time <%= Map.get(@selectedTimeMap, "hour") %>:<%= Map.get(@selectedTimeMap, "minute") |> Integer.to_string |> String.pad_leading(2, "0") %></Text>
             <TimeInput
-              initial-hour={"#{Map.get(@selectedTimeMap, "hour")}"}
-              initial-minute={"#{Map.get(@selectedTimeMap, "minute")}"}
+              initialHour={"#{Map.get(@selectedTimeMap, "hour")}"}
+              initialMinute={"#{Map.get(@selectedTimeMap, "minute")}"}
               phx-change="onTimeChange" />
           </Column>
         </HorizontalPager>

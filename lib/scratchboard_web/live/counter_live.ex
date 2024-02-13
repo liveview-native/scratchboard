@@ -11,15 +11,15 @@ defmodule ScratchboardWeb.CounterLive do
       <TopAppBar template="topBar">
         <Text template="title">App title</Text>
         <IconButton template="action" phx-click="decrement-count">
-          <Icon image-vector="filled:Add" />
+          <Icon imageVector="filled:Add" />
         </IconButton>
         <IconButton template="navigationIcon" phx-click="reset-counter">
-          <Icon image-vector="filled:Menu" />
+          <Icon imageVector="filled:Menu" />
         </IconButton>
       </TopAppBar>
       <Column template="body" scroll="vertical">
         <Text>Here</Text>
-        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" clip="circle" content-scale="fillHeight"/>
+        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" clip="circle" contentScale="fillHeight"/>
         <Text>Counter: <%= @count %> </Text>
         <Row scroll="horizontal">
           <Card shape="8" padding="8" elevation="{'defaultElevation': '10'}">
@@ -36,11 +36,11 @@ defmodule ScratchboardWeb.CounterLive do
           </Card>
         </Row>
         <Spacer height="30" />
-        <Row width="fill" horizontal-arrangement="spaceEvenly">
+        <Row width="fill" horizontalArrangement="spaceEvenly">
           <Text>Row 0 / Column 0</Text>
           <Text>Row 0 / Column 1</Text>
         </Row>
-        <Row width="fill" horizontal-arrangement="spaceBetween">
+        <Row width="fill" horizontalArrangement="spaceBetween">
           <Text>Row 1 / Column 0</Text>
           <Text>Row 1 / Column 1</Text>
         </Row>
