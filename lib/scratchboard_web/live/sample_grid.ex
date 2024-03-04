@@ -22,8 +22,8 @@ defmodule ScratchboardWeb.SampleGrid do
     {:noreply, assign(socket, :showPopup, false)}
   end
 
-  def handle_event("onMenuOptionClick", _params, socket) do
-    {:noreply, socket |> assign(:menuOption, _params) |> assign(:showPopup, false) }
+  def handle_event("onMenuOptionClick", %{"value" => value, "option" => _}, socket) do
+    {:noreply, socket |> assign(:menuOption, value) |> assign(:showPopup, false) }
   end
 
   @impl true
@@ -35,11 +35,11 @@ defmodule ScratchboardWeb.SampleGrid do
         <Text template="title">Grid <%= @menuOption %></Text>
         <IconButton template="action" phx-click="showPopup">
           <Icon imageVector="filled:MoreVert" />
-          <DropdownMenu phx-click="hidePopup" expanded={"#{ @showPopup }"}>
-            <DropdownMenuItem phx-click="onMenuOptionClick" phx-value="A">
+          <DropdownMenu onDismissRequest="hidePopup" expanded={"#{ @showPopup }"}>
+            <DropdownMenuItem phx-click="onMenuOptionClick" phx-value="A" phx-value-option="A">
               <Text>Option A</Text>
             </DropdownMenuItem>
-            <DropdownMenuItem phx-click="onMenuOptionClick" phx-value="B">
+            <DropdownMenuItem phx-click="onMenuOptionClick" phx-value="B" phx-value-option="B">
               <Text>Option B</Text>
             </DropdownMenuItem>
           </DropdownMenu>

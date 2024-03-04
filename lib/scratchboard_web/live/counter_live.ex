@@ -13,13 +13,15 @@ defmodule ScratchboardWeb.CounterLive do
         <IconButton template="action" phx-click="decrement-count">
           <Icon imageVector="filled:Add" />
         </IconButton>
-        <IconButton template="navigationIcon" phx-click="reset-counter">
+        <IconButton template="navigationIcon" phx-click="reset-count">
           <Icon imageVector="filled:Menu" />
         </IconButton>
       </TopAppBar>
       <Column template="body" scroll="vertical">
         <Text>Here</Text>
-        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg" alpha="0.5" clip="circle" contentScale="fillHeight"/>
+        <AsyncImage url="https://assets.dockyard.com/images/narwin-home-flare.jpg"
+          alpha={"#{if @count > 0 do @count / 10.0 else 1 end}"} clip="circle" contentScale="fillHeight"
+          phx-click="reset-count" phx-value-image="myImage" phx-value="foo"/>
         <Text>Counter: <%= @count %> </Text>
         <Row scroll="horizontal">
           <Card shape="8" padding="8" elevation="{'defaultElevation': '10'}">

@@ -6,7 +6,7 @@ defmodule ScratchboardWeb.SampleTab do
     {:ok, socket |> assign(:backCounter, 3) |> assign(:selectedTab, "0") |> assign(:selectedTimeMap, %{"hour" => 13, "minute" => 21, "is24Hour" => true}) }
   end
 
-  def handle_event("selectTab", tab, socket) do
+  def handle_event("selectTab", %{"page" => tab, "value" => _, "name" => _}, socket) do
     {:noreply, assign(socket, :selectedTab, tab)}
   end
 
@@ -27,20 +27,20 @@ defmodule ScratchboardWeb.SampleTab do
         <Text template="title">Navigation Bar</Text>
       </CenterAlignedTopAppBar>
       <Column size="fill" template="body">
-        <BackHandler enabled={"#{ @backCounter > 0}"} phx-keyup="onBackPressed"} />
+        <BackHandler enabled={"#{ @backCounter > 0}"} phx-keyup="onBackPressed" phx-value={"#{@backCounter}"} />
         <TabRow selectedTabIndex={"#{@selectedTab}"}>
-          <Tab selected={"#{@selectedTab == "0"}"} phx-click="selectTab" phx-value="0">
+          <Tab selected={"#{@selectedTab == "0"}"} phx-click="selectTab" phx-value="0" phx-value-name="first" phx-value-page={0}>
             <Text template="text">Tab 0</Text>
           </Tab>
-          <Tab selected={"#{@selectedTab == "1"}"} phx-click="selectTab" phx-value="1">
+          <Tab selected={"#{@selectedTab == "1"}"} phx-click="selectTab" phx-value="1" phx-value-name="second" phx-value-page={1}>
             <Text template="text">Tab 1</Text>
           </Tab>
-          <Tab selected={"#{@selectedTab == "2"}"} phx-click="selectTab" phx-value="2">
+          <Tab selected={"#{@selectedTab == "2"}"} phx-click="selectTab" phx-value="2" phx-value-name="third" phx-value-page={2}>
             <Text template="text">Tab 2</Text>
           </Tab>
         </TabRow>
         <Text>Back counter <%= @backCounter %></Text>
-        <HorizontalPager currentPage={"#{@selectedTab}"} pageCount="3" phx-change="selectTab">
+        <HorizontalPager currentPage={"#{@selectedTab}"} pageCount="3" phx-change="selectTab" phx-value-page={"#{@selectedTab}"} phx-value={"#{@selectedTab}"} phx-value-name="bla">
           <Column contentAlignment="center" background="system-red" size="fill">
           <FlowColumn scroll="horizontal">
           <%= for x <- 1..50 do %>
@@ -49,7 +49,7 @@ defmodule ScratchboardWeb.SampleTab do
           </FlowColumn>
           </Column>
           <LazyColumn size="fill">
-            <ListItem >
+            <ListItem phx-click="onBackPressed" phx-value-foo="bar">
               <Text template="headlineContent">Headline</Text>
             </ListItem>
             <ListItem>
@@ -91,7 +91,9 @@ defmodule ScratchboardWeb.SampleTab do
             <TimeInput
               initialHour={"#{Map.get(@selectedTimeMap, "hour")}"}
               initialMinute={"#{Map.get(@selectedTimeMap, "minute")}"}
-              phx-change="onTimeChange" />
+              phx-change="onTimeChange"
+              phx-value="uhhhu"
+              phx-value-foo="bar"/>
           </Column>
         </HorizontalPager>
       </Column>

@@ -3,14 +3,14 @@ defmodule ScratchboardWeb.SampleBottomSheetScaffold do
   use LiveViewNative.LiveView
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:sheetValue, "hidden") |> assign(:selectedDate, 1705028400000) |> assign(:showDialog, false) |> assign(:dateRange, [1704855600000, 1705719600000])}
+    {:ok, socket |> assign(:sheetValue, "partiallyExpanded") |> assign(:selectedDate, 1705028400000) |> assign(:showDialog, false) |> assign(:dateRange, [1704855600000, 1705719600000])}
   end
 
-  def handle_event("toggleSheet", newSheetValue, socket) do
+  def handle_event("toggleSheet", %{"sheetValue" => newSheetValue}, socket) do
     {:noreply, assign(socket, :sheetValue, newSheetValue)}
   end
 
-  def handle_event("selectDate", newDate, socket) do
+  def handle_event("selectDate", %{"date" => newDate, "from" => _}, socket) do
     {:noreply, assign(socket, :selectedDate, newDate)}
   end
 
@@ -38,10 +38,10 @@ defmodule ScratchboardWeb.SampleBottomSheetScaffold do
         <Text>Sheet</Text>
       </Box>
       <Column width="fill" scroll="vertical" template="body">
-        <Button phx-click="toggleSheet" phx-value={if @sheetValue == "hidden", do: "partiallyExpanded", else: "hidden"}>
+        <Button phx-click="toggleSheet" phx-value-sheetValue={if @sheetValue == "hidden", do: "partiallyExpanded", else: "hidden"}>
           <Text>Toggle</Text>
         </Button>
-        <DatePicker phx-change="selectDate" initialSelectedDateMillis="1705028400000"/>
+        <DatePicker phx-change="selectDate" initialSelectedDateMillis="1705028400000" phx-value-from="picker" />
         <Text>Date: <%= @selectedDate %></Text>
         <TextButton phx-click="showDialog"><Text>Show Dialog</Text></TextButton>
         <Box width="fill" height="400">
@@ -50,11 +50,11 @@ defmodule ScratchboardWeb.SampleBottomSheetScaffold do
         <Text>Date Start = <%= Enum.at(@dateRange,0) %></Text>
         <Text>Date End <%= Enum.at(@dateRange,1) %></Text>
         <%= if @showDialog do %>
-        <DatePickerDialog phx-click="hideDialog">
+        <DatePickerDialog onDismissRequest="hideDialog">
           <TextButton phx-click="hideDialog" template="confirm">
             <Text>Confirm</Text>
           </TextButton>
-          <DatePicker phx-change="selectDate" initialSelectedDateMillis={"#{@selectedDate}"} showToggleMode="false" />
+          <DatePicker phx-change="selectDate" initialSelectedDateMillis={"#{@selectedDate}"} showToggleMode="false" phx-value-from="dialog" />
         </DatePickerDialog>
         <% end %>
       </Column>
